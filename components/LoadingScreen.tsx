@@ -7,8 +7,26 @@ const MIN_DURATION = 3000; // ms - bar always takes at least this long to visual
 const RAMP_CAP = 92;       // % reached by the end of MIN_DURATION if not finishing yet
 const FINISH_DURATION = 500; // ms - smooth top-up from RAMP_CAP to 100%
 
+const SLOW_POINT = 80;   // % where the bar visibly starts to decelerate
+const FAST_PHASE = 0.4;  // fraction of MIN_DURATION spent climbing to SLOW_POINT
+
+function easeOutQuad(t: number) {
+    return 1 - (1 - t) * (1 - t);
+}
+
 function easeOutCubic(t: number) {
     return 1 - Math.pow(1 - t, 3);
+}
+
+function computeRampProgress(t: number) {
+    if (t < FAST_PHASE) {
+        // Quick, steady climb up to SLOW_POINT
+        const localT = t / FAST_PHASE;
+        return SLOW_POINT * easeOutQuad(localT);
+    }
+    // Deceleration only happens after SLOW_POINT, crawling toward RAMP_CAP
+    const localT = (t - FAST_PHASE) / (1 - FAST_PHASE);
+    return SLOW_POINT + (RAMP_CAP - SLOW_POINT) * easeOutCubic(localT);
 }
 
 export default function LoadingScreen({ children }: { children: React.ReactNode }) {
@@ -48,7 +66,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                 } else {
 
                     const t = Math.min(1, elapsed / MIN_DURATION);
-                    setProgress(RAMP_CAP * easeOutCubic(t));
+                    setProgress(computeRampProgress(t));
                     frameRef.current = requestAnimationFrame(tick);
                     return;
                 }
