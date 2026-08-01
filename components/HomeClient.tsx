@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/sections/HeroSection";
 import BlueprintZone from "@/components/BlueprintZone";
@@ -15,13 +15,20 @@ export default function HomeClient({
     certifications: Partner[];
 }) {
     const scrollRef = useRef<HTMLElement>(null);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     return (
         <>
             <Header scrollRef={scrollRef} />
-            <main ref={scrollRef} className="scroll-container overflow-x-hidden">
+            <main ref={scrollRef} className="scroll-container">
                 <HeroSection partners={partners} scrollRef={scrollRef} />
-                <BlueprintZone scrollRef={scrollRef} certifications={certifications} />
+                {mounted && (
+                    <BlueprintZone scrollRef={scrollRef} certifications={certifications} />
+                )}
             </main>
         </>
     );
