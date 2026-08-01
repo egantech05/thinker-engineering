@@ -25,9 +25,11 @@ export default function HomeClient({
         <>
             <Header scrollRef={scrollRef} />
             <main ref={scrollRef} className="scroll-container">
-                <HeroSection partners={partners} scrollRef={scrollRef} />
                 {mounted && (
-                    <BlueprintZone scrollRef={scrollRef} certifications={certifications} />
+                    <>
+                        <HeroSection partners={partners} scrollRef={scrollRef} />
+                        <BlueprintZone scrollRef={scrollRef} certifications={certifications} />
+                    </>
                 )}
             </main>
         </>
