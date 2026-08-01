@@ -1,7 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+
+const LoadingContext = createContext(false);
+export function useLoadingComplete() {
+    return useContext(LoadingContext);
+}
 
 const MIN_DURATION = 3000; // ms - bar always takes at least this long to visually fill
 const RAMP_CAP = 92;       // % reached by the end of MIN_DURATION if not finishing yet
@@ -33,6 +38,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
     const [progress, setProgress] = useState(0);
     const [visible, setVisible] = useState(true);
     const [fading, setFading] = useState(false);
+    const [reveal, setReveal] = useState(false);
 
     const startTimeRef = useRef(Date.now());
     const readyRef = useRef(false);
@@ -77,8 +83,9 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
             setProgress(RAMP_CAP + (100 - RAMP_CAP) * easeOutCubic(t));
 
             if (t >= 1) {
-                document.documentElement.style.overflow = "";
                 setFading(true);
+                setReveal(true);
+                document.documentElement.style.overflow = "";
                 window.setTimeout(() => setVisible(false), 600);
                 return;
             }
@@ -120,7 +127,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                     </span>
                 </div>
             )}
-            {children}
+            <LoadingContext.Provider value={reveal}>{children}</LoadingContext.Provider>
         </>
     );
 }

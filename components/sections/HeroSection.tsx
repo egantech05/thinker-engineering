@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLoadingComplete } from "@/components/LoadingScreen";
 import { stats } from "@/lib/data";
 import Counter from "@/components/Counter";
 
@@ -16,6 +17,7 @@ export default function HeroSection({
     scrollRef: React.RefObject<HTMLElement | null>;
 }) {
     const heroRef = useRef<HTMLElement>(null);
+    const loaded = useLoadingComplete();
 
     const { scrollYProgress } = useScroll({
         target: heroRef,
@@ -46,7 +48,7 @@ export default function HeroSection({
                     >
                         <motion.h1
                             initial="hidden"
-                            animate="visible"
+                            animate={loaded ? "visible" : "hidden"}
                             variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
                             className="max-w-4xl text-4xl md:text-6xl font-medium leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
                         >
@@ -69,11 +71,10 @@ export default function HeroSection({
                                 Into Resilient <span className="text-gold">Infrastructure</span>
                             </motion.span>
                         </motion.h1>
-
                         <motion.div
                             className="flex gap-10 md:gap-20 mt-14"
                             initial={{ opacity: 0, y: 16 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
                             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
                         >
                             {stats.map((s) => (
