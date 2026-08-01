@@ -29,7 +29,7 @@ export default function ContactSection() {
                     variants={{
                         visible: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } },
                     }}
-                    className="rounded-3xl bg-white/5 backdrop-blur-sm border border-white/10 p-8 md:p-10"
+                    className="rounded-3xl bg-white/10 md:bg-white/5 md:backdrop-blur-sm border border-white/10 p-8 md:p-10"
                 >
                     <motion.h3
                         variants={{

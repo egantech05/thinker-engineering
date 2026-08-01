@@ -157,14 +157,14 @@ export default function SolutionsSection() {
                 <button
                     onClick={() => go(-1)}
                     aria-label="Previous service"
-                    className="absolute left-2 md:left-8 top-[180px] md:top-[230px] -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-sm"
+                    className="absolute left-2 md:left-8 top-[180px] md:top-[230px] -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
                 >
                     <ChevronLeft size={18} />
                 </button>
                 <button
                     onClick={() => go(1)}
                     aria-label="Next service"
-                    className="absolute right-2 md:right-8 top-[180px] md:top-[230px] -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-sm"
+                    className="absolute right-2 md:right-8 top-[180px] md:top-[230px] -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
                 >
                     <ChevronRight size={18} />
                 </button>

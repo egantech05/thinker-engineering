@@ -121,14 +121,14 @@ export default function ProjectsSection() {
                     <button
                         onClick={() => scrollByAmount(-1)}
                         aria-label="Previous projects"
-                        className="absolute left-0 md:-left-4 top-[38%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-sm"
+                        className="absolute left-0 md:-left-4 top-[38%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
                     >
                         <ChevronLeft size={18} />
                     </button>
                     <button
                         onClick={() => scrollByAmount(1)}
                         aria-label="Next projects"
-                        className="absolute right-0 md:-right-4 top-[38%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center backdrop-blur-sm"
+                        className="absolute right-0 md:-right-4 top-[38%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
                     >
                         <ChevronRight size={18} />
                     </button>
