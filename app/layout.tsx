@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export const metadata: Metadata = {
   title: "Thinker Engineering | Data Center Consultancy",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-ink text-white antialiased">{children}</body>
+      <body className="bg-ink text-white antialiased">
+        <LoadingScreen>{children}</LoadingScreen>
+      </body>
     </html>
   );
 }
