@@ -76,61 +76,13 @@ export default function BlueprintZone({
     const contactY = useTransform(bufferProgress2, [0, 1], ["100%", "0%"]);
 
     return (
-        <div
-            className="relative grid"
-            style={{ gridTemplateAreas: '"stack"', gridTemplateColumns: "minmax(0, 1fr)" }}
-        >
-            <div
-                className="sticky top-0 h-screen overflow-hidden"
-                style={{ gridArea: "stack" }}
-            >
-                <motion.div style={{ y }} className="absolute right-0 top-0 w-full md:w-[65%] h-[200vh] bg-panel" />
-                <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
-            </div>
-
-            <div className="flex flex-col min-w-0" style={{ gridArea: "stack" }}>
-                <div ref={leadRef} className="flex flex-col">
-                    <div ref={pauseRef}>
-                        <SpecialistSection />
-                    </div>
-                    <OperationsSection certifications={certifications} />
-                </div>
-                <SolutionsSection />
-                {/* Projects — pins in place on the same continuous
-                    blueprint; the trailing spacer times Location's reveal. */}
-                <div className="relative h-[300vh]">
-                    <div className="sticky top-0 h-screen overflow-hidden">
-                        <ProjectsSection />
-                    </div>
-                    {/* Dwell — extra scroll consumed while Projects stays
-                        frozen, before Location starts sliding up. */}
-                    <div className="h-screen" aria-hidden />
-                    <div ref={bufferRef} className="h-screen" aria-hidden />
-                </div>
-
-                {/* Spacer — extra scroll consumed while Location (now
-                    covering the screen) stays frozen, before Contact
-                    starts sliding up over it. */}
-                <div ref={bufferRef2} className="h-screen" aria-hidden />
-            </div>
-
-            {/* Location overlay — off-screen below until the buffer starts,
-                then slides up to fully cover the pinned Projects section. */}
-            <motion.div
-                style={{ y: locationY, gridArea: "stack" }}
-                className="sticky top-0 h-screen z-10 overflow-y-auto no-scrollbar bg-ink"
-            >
-                <LocationSection />
-            </motion.div>
-
-            {/* Contact overlay — off-screen below until bufferRef2 starts,
-                then slides up to fully cover the pinned Location section. */}
-            <motion.div
-                style={{ y: contactY, gridArea: "stack" }}
-                className="sticky top-0 h-screen z-20 overflow-y-auto no-scrollbar bg-ink"
-            >
-                <ContactSection />
-            </motion.div>
+        <div className="flex flex-col">
+            <SpecialistSection />
+            <OperationsSection certifications={certifications} />
+            <SolutionsSection />
+            <ProjectsSection />
+            <LocationSection />
+            <ContactSection />
         </div>
     );
 }
