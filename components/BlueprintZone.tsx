@@ -84,15 +84,7 @@ export default function BlueprintZone({
                 className="sticky top-0 h-screen overflow-hidden"
                 style={{ gridArea: "stack" }}
             >
-                <motion.div style={{ y }} className="absolute right-0 top-0 w-full md:w-[65%] h-[200vh]">
-                    <Image
-                        src="/images/blueprint-bg.png"
-                        alt=""
-                        fill
-                        className="object-cover object-right opacity-50"
-                        aria-hidden
-                    />
-                </motion.div>
+                <motion.div style={{ y }} className="absolute right-0 top-0 w-full md:w-[65%] h-[200vh] bg-panel" />
                 <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
             </div>
 
