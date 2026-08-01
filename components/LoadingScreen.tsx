@@ -120,7 +120,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                     </span>
                 </div>
             )}
-            <div style={visible ? { display: "none" } : undefined}>{children}</div>
+            {children}
         </>
     );
 }
