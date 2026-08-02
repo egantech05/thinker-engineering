@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import ScrollHint from "@/components/ScrollHint";
 import { projects } from "@/lib/data";
 
 type Project = (typeof projects)[number];
@@ -134,6 +135,7 @@ export default function ProjectsSection() {
                     </button>
                 </div>
             </div>
+            <ScrollHint />
         </section>
     );
 }

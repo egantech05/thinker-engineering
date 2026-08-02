@@ -126,7 +126,7 @@ export default function BlueprintZone({
                 then slides up to fully cover the pinned Projects section. */}
             <motion.div
                 style={{ y: locationY, gridArea: "stack" }}
-                className="sticky top-0 h-screen z-10 overflow-y-auto no-scrollbar bg-ink"
+                className="sticky top-0 h-screen z-10 overflow-hidden bg-ink"
             >
                 <LocationSection />
             </motion.div>

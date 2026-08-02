@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-ink text-white antialiased">
+      <body className="bg-gradient-to-b from-black from-10% to-blue-dark/50 text-white antialiased">
         <LoadingScreen>{children}</LoadingScreen>
       </body>
     </html>
