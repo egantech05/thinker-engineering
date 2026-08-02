@@ -22,7 +22,7 @@ export default function LocationSection() {
                         />
                     </div>
 
-                    <div className="flex flex-col gap-5 w-full md:w-80">
+                    <div className="grid grid-cols-2 gap-4 md:flex md:flex-col md:gap-5 w-full md:w-80">
                         {locations.map((loc) => (
                             <div
                                 key={loc.label}
