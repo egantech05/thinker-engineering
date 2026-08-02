@@ -34,7 +34,19 @@ export default function LocationSection() {
                                 />
                                 <div>
                                     <h3 className="font-semibold text-lg mb-1.5">{loc.label}</h3>
-                                    <p className="text-sm text-mist leading-relaxed">{loc.address}</p>
+                                    <p className="text-sm text-mist leading-relaxed">
+                                        {loc.address.split("\n").map((line, i, arr) => (
+                                            <span key={i}>
+                                                {line}
+                                                {i < arr.length - 1 && (
+                                                    <>
+                                                        <br className="md:hidden" />
+                                                        <span className="hidden md:inline"> </span>
+                                                    </>
+                                                )}
+                                            </span>
+                                        ))}
+                                    </p>
                                 </div>
                             </div>
                         ))}
