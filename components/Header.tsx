@@ -68,9 +68,9 @@ export default function Header({
                 >
                     Contact Us
                 </a>
-                <button className="md:hidden p-2" aria-label="Menu">
-                    <Menu size={22} />
-                </button>
+                {/* <button className="md:hidden p-2" aria-label="Menu">
+    <Menu size={22} />
+</button> */}
             </div >
         </header >
     );

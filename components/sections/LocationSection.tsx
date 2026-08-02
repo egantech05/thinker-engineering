@@ -22,11 +22,11 @@ export default function LocationSection() {
                         />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4 md:flex md:flex-col md:gap-5 w-full md:w-80">
+                    <div className="flex flex-col gap-4 w-full md:w-80">
                         {locations.map((loc) => (
                             <div
                                 key={loc.label}
-                                className="group flex gap-4 rounded-2xl bg-white/10 md:bg-white/5 md:backdrop-blur-sm p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white/10 hover:shadow-lg hover:shadow-black/30"
+                                className="group flex gap-3 md:gap-4 rounded-2xl bg-white/10 md:bg-white/5 md:backdrop-blur-sm p-4 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-white/10 hover:shadow-lg hover:shadow-black/30"
                             >
                                 <span
                                     className={`mt-1.5 h-3 w-3 rounded-full shrink-0 transition-transform duration-300 ease-out group-hover:scale-125 ${loc.color === "blue" ? "bg-blue" : "bg-gold"
