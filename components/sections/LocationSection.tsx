@@ -33,8 +33,8 @@ export default function LocationSection() {
                                         }`}
                                 />
                                 <div>
-                                    <h3 className="font-semibold text-lg mb-1.5">{loc.label}</h3>
-                                    <p className="text-sm text-mist leading-relaxed">
+                                    <h3 className="font-semibold text-base md:text-lg mb-1.5">{loc.label}</h3>
+                                    <p className="text-xs md:text-sm text-mist leading-relaxed">
                                         {loc.address.split("\n").map((line, i, arr) => (
                                             <span key={i}>
                                                 {line}

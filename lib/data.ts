@@ -152,14 +152,14 @@ export const locations = [
         // approximate % position over the map graphic
         x: 27,
         y: 62,
-        address: "F-G-3A, Block F, Jalan Perdana CBD, Perdana 3, Cyber 12, Cyberjaya, 63000, Selangor, Malaysia",
+        address: "F-G-3A, Block F, Jalan Perdana CBD, Perdana 3, Cyber 12,\nCyberjaya, 63000, Selangor, Malaysia",
     },
     {
         label: "East Coast Branch",
         color: "gold",
         x: 36,
         y: 34,
-        address: "KCP 31, Tingkat 1, Kemaman Business Centre, Jalan Lebai Saras, 24000, Kemaman, Terengganu, Malaysia.",
+        address: "KCP 31, Tingkat 1, Kemaman Business Centre,\nJalan Lebai Saras, 24000, Kemaman, Terengganu, Malaysia.",
     },
 ];
 
