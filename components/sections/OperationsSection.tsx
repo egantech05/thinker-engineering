@@ -71,7 +71,7 @@ export default function OperationsSection({ certifications }: { certifications: 
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, amount: 0.4 }}
                                     transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                                    whileHover={{ color: "#ffcb05", x: 4 }}
+                                    whileHover={{ color: "#a855f7", x: 4 }}
                                     className="text-3xl md:text-4xl font-medium cursor-default"
                                 >
                                     <motion.span

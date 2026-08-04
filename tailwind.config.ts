@@ -5,15 +5,15 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                ink: "#050505",
-                panel: "#0b0d10",
+                ink: "#0A0612",
+                panel: "#150F24",
                 gold: {
-                    DEFAULT: "#FFCB05",
-                    light: "#FFD633",
+                    DEFAULT: "#A855F7",
+                    light: "#D8B4FE",
                 },
                 blue: {
-                    DEFAULT: "#2B6CB8",
-                    dark: "#0F2A45",
+                    DEFAULT: "#7C3AED",
+                    dark: "#2E1065",
                 },
                 mist: "#9CA3AF",
             },

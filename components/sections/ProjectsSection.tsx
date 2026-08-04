@@ -32,16 +32,19 @@ function ProjectCard({
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={visible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
                 transition={{ type: "spring", stiffness: 30, damping: 30 }}
-                whileHover={{ scale: 1.06, y: -8, transition: { type: "spring", stiffness: 300, damping: 20 } }}
                 className="cursor-default"
             >
                 <div className="font-bold mb-3 text-center">{p.year}</div>
-                <div className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50">
+                <motion.div
+                    whileHover={{ scale: 1.06, y: -8 }}
+                    transition={{ duration: 0.1, ease: "easeOut" }}
+                    className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50"
+                >
                     {p.background && (
                         <motion.div
                             className="absolute inset-0"
                             whileHover={{ scale: 1.12 }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            transition={{ duration: 0.1, ease: "easeOut" }}
                         >
                             <Image
                                 src={p.background}
@@ -69,7 +72,7 @@ function ProjectCard({
                             </div>
                         </div>
                     )}
-                </div>
+                </motion.div>
                 <p className="text-xs text-mist mt-3">
                     {p.description}
                 </p>

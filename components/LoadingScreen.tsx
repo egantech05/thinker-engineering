@@ -118,11 +118,11 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                     />
                     <div className="w-48 md:w-64 h-[2px] bg-white/15 overflow-hidden rounded-full">
                         <div
-                            className="h-full bg-white rounded-full"
+                            className="h-full bg-gold rounded-full"
                             style={{ width: `${progress}%` }}
                         />
                     </div>
-                    <span className="text-white text-sm tabular-nums tracking-wide">
+                    <span className="text-gold text-sm tabular-nums tracking-wide">
                         {Math.round(progress)}%
                     </span>
                 </div>

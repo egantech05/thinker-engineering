@@ -106,20 +106,20 @@ export default function BlueprintZone({
                 <SolutionsSection />
                 {/* Projects — pins in place on the same continuous
                     blueprint; the trailing spacer times Location's reveal. */}
-                <div className="relative h-[300vh]">
+                <div id="projects-wrapper" className="relative h-[300vh]">
                     <div className="sticky top-0 h-screen overflow-hidden">
                         <ProjectsSection />
                     </div>
                     {/* Dwell — extra scroll consumed while Projects stays
                         frozen, before Location starts sliding up. */}
                     <div className="h-screen" aria-hidden />
-                    <div ref={bufferRef} className="h-screen" aria-hidden />
+                    <div ref={bufferRef} id="location-buffer" className="h-screen" aria-hidden />
                 </div>
 
-                {/* Spacer — extra scroll consumed while Location (now
-                    covering the screen) stays frozen, before Contact
-                    starts sliding up over it. */}
-                <div ref={bufferRef2} className="h-screen" aria-hidden />
+                {/* Dwell — extra scroll consumed while Location stays
+                    frozen, before Contact starts sliding up over it. */}
+                <div className="h-screen" aria-hidden />
+                <div ref={bufferRef2} id="contact-buffer" className="h-screen" aria-hidden />
             </div>
 
             {/* Location overlay — off-screen below until the buffer starts,

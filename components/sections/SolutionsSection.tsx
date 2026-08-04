@@ -26,8 +26,8 @@ const shortestDiff = (from: number, to: number) => {
 };
 
 const RADIUS = Math.floor((N - 1) / 2);
-const BASE_SPACING = 240;
-const SPACING_DECAY = 0.68;
+const BASE_SPACING = 160;
+const SPACING_DECAY = 0.9;
 
 const offsetForDistance = (distance: number) => {
     const dir = Math.sign(distance);
@@ -60,7 +60,7 @@ export default function SolutionsSection() {
     );
 
     return (
-        <section ref={sectionRef} className="snap-section flex flex-col items-center justify-center bg-ink/60 md:bg-transparent px-6 md:px-16 py-24">
+        <section id="solutions" ref={sectionRef} className="snap-section flex flex-col items-center justify-center bg-ink/60 md:bg-transparent px-6 md:px-16 py-24">
             <AnimatePresence mode="wait">
                 <motion.h2
                     key={current.key}
@@ -74,7 +74,18 @@ export default function SolutionsSection() {
                 </motion.h2>
             </AnimatePresence>
 
-            <div className="relative w-full flex justify-center items-start h-[440px] md:h-[560px] overflow-hidden">
+            <div className="relative w-full flex justify-center items-start h-[520px] md:h-[680px] overflow-hidden pt-2 md:pt-4">
+                <button
+                    onClick={() => go(-1)}
+                    aria-label="Previous service"
+                    className="absolute inset-y-0 left-0 w-1/2 z-20 cursor-pointer"
+                />
+                <button
+                    onClick={() => go(1)}
+                    aria-label="Next service"
+                    className="absolute inset-y-0 right-0 w-1/2 z-20 cursor-pointer"
+                />
+
                 {slots.map((pos, slotIndex) => {
                     const service = services[wrap(pos)];
                     const Icon = icons[service.icon];
@@ -84,7 +95,7 @@ export default function SolutionsSection() {
 
                     const restingState = {
                         x: offsetForDistance(distance),
-                        scale: isActive ? 1 : Math.max(0.72, 1 - absDist * 0.14),
+                        scale: isActive ? 1 : Math.max(0.4, 1 - absDist * 0.05),
                         opacity: 1,
                         zIndex: 10 - absDist,
                     };
@@ -95,17 +106,12 @@ export default function SolutionsSection() {
                             initial={{ x: offsetForDistance(distance), scale: 0.7, opacity: 0 }}
                             animate={hasAppeared ? restingState : { x: offsetForDistance(distance), scale: 0.7, opacity: 0 }}
                             exit={{ x: offsetForDistance(distance), opacity: 0 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 50,
-                                damping: 50,
-                                delay: hasAppeared ? slotIndex * 0.3 : 0,
-                            }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
                             className="absolute flex flex-col items-center"
                         >
                             <div
                                 className={`relative w-[260px] md:w-[380px] h-[360px] md:h-[460px] rounded-2xl overflow-hidden transition-shadow duration-500 ${isActive
-                                    ? "shadow-[0_0_30px_6px_rgba(43,108,184,0.45)]"
+                                    ? "shadow-[0_0_16px_3px_rgba(124,58,237,0.45)]"
                                     : "shadow-2xl"
                                     }`}
                             >
@@ -140,13 +146,30 @@ export default function SolutionsSection() {
                                         )}
                                     </div>
                                 )}
+
+
+                                {isActive && (
+                                    <>
+                                        <button
+                                            onClick={() => go(-1)}
+                                            aria-label="Previous service"
+                                            className="absolute inset-y-0 left-0 w-1/2 z-10 cursor-pointer"
+                                        />
+                                        <button
+                                            onClick={() => go(1)}
+                                            aria-label="Next service"
+                                            className="absolute inset-y-0 right-0 w-1/2 z-10 cursor-pointer"
+                                        />
+                                    </>
+                                )}
                             </div>
 
                             <button
                                 onClick={() => jumpTo(wrap(pos))}
-                                className={`mt-4 flex flex-col items-center gap-2 text-xs transition-colors
-                    ${isActive ? "text-gold" : "text-mist hover:text-white"}`}
+                                className={`mt-16 flex flex-col items-center gap-2 text-xs transition-colors
+                                ${isActive ? "text-gold" : "text-mist hover:text-white"}`}
                             >
+
                                 <Icon size={22} />
                                 <span className="max-w-[6rem] text-center">{service.title}</span>
                             </button>
@@ -154,20 +177,22 @@ export default function SolutionsSection() {
                     );
                 })}
 
-                <button
-                    onClick={() => go(-1)}
-                    aria-label="Previous service"
-                    className="absolute left-2 md:left-8 top-[180px] md:top-[230px] -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
-                >
-                    <ChevronLeft size={18} />
-                </button>
-                <button
-                    onClick={() => go(1)}
-                    aria-label="Next service"
-                    className="absolute right-2 md:right-8 top-[180px] md:top-[230px] -translate-y-1/2 z-20 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
-                >
-                    <ChevronRight size={18} />
-                </button>
+                <div className="absolute right-4 md:right-12 bottom-0 md:bottom-2 z-20 flex items-center gap-2">
+                    <button
+                        onClick={() => go(-1)}
+                        aria-label="Previous service"
+                        className="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
+                    >
+                        <ChevronLeft size={18} />
+                    </button>
+                    <button
+                        onClick={() => go(1)}
+                        aria-label="Next service"
+                        className="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
+                    >
+                        <ChevronRight size={18} />
+                    </button>
+                </div>
             </div>
         </section>
     );
