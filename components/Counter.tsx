@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLoadingComplete } from "@/components/LoadingScreen";
 
 export default function Counter({
     value,
@@ -15,8 +16,11 @@ export default function Counter({
     const suffix = match ? match[2] : "";
 
     const [count, setCount] = useState(0);
+    const ready = useLoadingComplete();
 
     useEffect(() => {
+        if (!ready) return;
+
         let start: number | null = null;
         let frame: number;
 
@@ -31,7 +35,7 @@ export default function Counter({
 
         frame = requestAnimationFrame(step);
         return () => cancelAnimationFrame(frame);
-    }, [target, duration]);
+    }, [ready, target, duration]);
 
     return (
         <span>
