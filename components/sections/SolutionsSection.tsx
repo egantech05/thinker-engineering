@@ -124,6 +124,8 @@ export default function SolutionsSection() {
                                     priority={isActive}
                                 />
 
+                                <div className="absolute inset-0 bg-[#7c3aed]/50 mix-blend-color" />
+
                                 {isActive ? (
                                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
                                 ) : (

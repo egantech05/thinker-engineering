@@ -57,7 +57,7 @@ export default function SpecialistSection() {
                             }}
                             whileHover={{ scale: 1.04, y: -6 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="max-w-6xl mx-auto w-full rounded-2xl md:rounded-3xl bg-black/60 md:bg-black/40 md:backdrop-blur-sm p-8 md:p-14 transition-shadow duration-300 hover:shadow-2xl hover:shadow-black/40"
+                            className="max-w-6xl mx-auto w-full rounded-2xl md:rounded-3xl bg-black/5 md:bg-black/10 md:backdrop-blur-sm p-8 md:p-14 transition-shadow duration-300 hover:shadow-2xl hover:shadow-black/40"
                         >
                             <h3 className="text-gold text-lg sm:text-xl md:text-2xl font-semibold mb-3 leading-snug">
                                 {p.title}

@@ -59,6 +59,7 @@ export default function OperationsSection({ certifications }: { certifications: 
                                 fill
                                 className="object-cover"
                             />
+                            <div className="absolute inset-0 bg-[#7c3aed]/50 mix-blend-color" />
                         </motion.div>
                     </motion.div>
 
