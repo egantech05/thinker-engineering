@@ -3,17 +3,25 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { projects } from "@/lib/data";
+import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { insights } from "@/lib/data";
 
-type Project = (typeof projects)[number];
+type Insight = (typeof insights)[number];
 
-function ProjectCard({
-    project: p,
+function formatDate(dateStr: string) {
+    return new Date(dateStr).toLocaleDateString("en-MY", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    });
+}
+
+function InsightCard({
+    item,
     index,
     hasAppeared,
 }: {
-    project: Project;
+    item: Insight;
     index: number;
     hasAppeared: boolean;
 }) {
@@ -26,61 +34,50 @@ function ProjectCard({
     }, [hasAppeared, index]);
 
     return (
-        <div className="shrink-0 w-40 md:w-56 snap-start">
-            <motion.div
+        <div className="shrink-0 w-64 md:w-80 snap-start">
+            <motion.a
+                href={item.link}
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={visible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
                 transition={{ type: "spring", stiffness: 30, damping: 30 }}
-                className="cursor-default"
+                className="block group"
             >
-                <div className="font-bold mb-3 text-center">{p.year}</div>
                 <motion.div
-                    whileHover={{ scale: 1.06, y: -8 }}
+                    whileHover={{ scale: 1.03, y: -6 }}
                     transition={{ duration: 0.1, ease: "easeOut" }}
-                    className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50"
+                    className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50"
                 >
-                    {p.background && (
+                    {item.image && (
                         <motion.div
                             className="absolute inset-0"
                             whileHover={{ scale: 1.12 }}
                             transition={{ duration: 0.1, ease: "easeOut" }}
                         >
-                            <Image
-                                src={p.background}
-                                alt=""
-                                fill
-                                className="object-cover"
-                            />
+                            <Image src={item.image} alt="" fill className="object-cover" />
                         </motion.div>
                     )}
-                    <div
-                        className="absolute inset-0"
-                        style={{
-                            backgroundImage: `linear-gradient(160deg, ${p.color}99, #050505e6)`,
-                        }}
-                    />
-                    {p.logo && (
-                        <div className="absolute inset-0 flex items-center justify-center p-10">
-                            <div className="relative w-1/2 h-1/2">
-                                <Image
-                                    src={p.logo}
-                                    alt={p.partner}
-                                    fill
-                                    className="object-contain brightness-0 invert"
-                                />
-                            </div>
-                        </div>
-                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                    <span className="absolute top-3 left-3 text-[11px] uppercase tracking-wide bg-gold text-ink font-semibold px-2.5 py-1 rounded-full">
+                        {item.category}
+                    </span>
                 </motion.div>
-                <p className="text-xs text-mist mt-3">
-                    {p.description}
-                </p>
-            </motion.div>
+
+                <div className="mt-4">
+                    <p className="text-xs text-mist">{formatDate(item.date)}</p>
+                    <h3 className="text-base font-medium text-white mt-1 leading-snug group-hover:text-gold transition-colors">
+                        {item.title}
+                    </h3>
+                    <p className="text-xs text-mist mt-2 line-clamp-2">{item.excerpt}</p>
+                    <span className="inline-flex items-center gap-1 text-xs text-gold mt-3">
+                        Read more <ArrowUpRight size={13} />
+                    </span>
+                </div>
+            </motion.a>
         </div>
     );
 }
 
-export default function ProjectsSection() {
+export default function InsightsSection() {
     const scrollRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef(null);
     const hasAppeared = useInView(sectionRef, { once: true, amount: 0.2 });
@@ -95,7 +92,7 @@ export default function ProjectsSection() {
     };
 
     return (
-        <section ref={sectionRef} id="projects" className="snap-section flex items-center bg-ink/60 md:bg-transparent px-6 md:px-16 py-24">
+        <section ref={sectionRef} id="insights" className="snap-section flex items-center bg-ink/60 md:bg-transparent px-6 md:px-16 py-24">
             <div className="max-w-6xl mx-auto w-full">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -103,7 +100,7 @@ export default function ProjectsSection() {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                     className="text-4xl md:text-5xl font-medium text-white mb-14 text-center"
                 >
-                    Projects
+                    Insights
                 </motion.h2>
 
                 <div className="relative">
@@ -111,10 +108,10 @@ export default function ProjectsSection() {
                         ref={scrollRef}
                         className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
                     >
-                        {projects.map((p, i) => (
-                            <ProjectCard
-                                key={`${p.year}-${p.partner}-${i}`}
-                                project={p}
+                        {insights.map((item, i) => (
+                            <InsightCard
+                                key={item.slug}
+                                item={item}
                                 index={i}
                                 hasAppeared={hasAppeared}
                             />
@@ -123,14 +120,14 @@ export default function ProjectsSection() {
 
                     <button
                         onClick={() => scrollByAmount(-1)}
-                        aria-label="Previous projects"
+                        aria-label="Previous insights"
                         className="absolute left-0 md:-left-4 top-[38%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
                     >
                         <ChevronLeft size={18} />
                     </button>
                     <button
                         onClick={() => scrollByAmount(1)}
-                        aria-label="Next projects"
+                        aria-label="Next insights"
                         className="absolute right-0 md:-right-4 top-[38%] -translate-y-1/2 z-10 h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center md:backdrop-blur-sm"
                     >
                         <ChevronRight size={18} />

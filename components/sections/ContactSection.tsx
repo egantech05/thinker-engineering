@@ -6,7 +6,7 @@ import { contact } from "@/lib/data";
 
 export default function ContactSection() {
     return (
-        <section id="contact" className="snap-section flex flex-col justify-between bg-gradient-to-b from-black from-10% to-blue-dark/50 px-6 md:px-16 pt-28 pb-0">
+        <section id="contact" className="snap-section flex flex-col justify-between px-6 md:px-16 pt-28 pb-0">
             <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-start flex-1">
                 <motion.h2
                     initial={{ opacity: 0, x: -30 }}

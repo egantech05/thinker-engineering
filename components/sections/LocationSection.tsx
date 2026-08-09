@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import { locations } from "@/lib/data";
-import ScrollHint from "@/components/ScrollHint";
 
 export default function LocationSection() {
     return (
-        <section id="location" className="snap-section flex items-center bg-gradient-to-b from-black from-10% to-blue-dark/50 px-6 md:px-16 py-10 md:py-24">
+        <section id="location" className="snap-section flex items-center px-6 md:px-16 py-10 md:py-24">
             <div className="max-w-6xl mx-auto w-full px-4 py-4 md:px-14 md:py-14">
                 <h2 className="text-3xl md:text-5xl font-medium text-white mb-6 md:mb-12 text-center">
                     Location
@@ -53,7 +52,7 @@ export default function LocationSection() {
                     </div>
                 </div>
             </div>
-            <ScrollHint />
+
         </section>
     );
 }

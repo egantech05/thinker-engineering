@@ -40,6 +40,7 @@ export default function HeroSection({
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/60" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue via-blue-dark to-blue-dark mix-blend-color opacity-40" />
 
                     {/* Text overlay — absolutely positioned on top of the image, moves down independently via scroll */}
                     <motion.div
@@ -59,7 +60,7 @@ export default function HeroSection({
                                     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
                                 }}
                             >
-                                <span className="text-gold">Transforming</span> Digitalization
+                                Transforming Digitalization
                             </motion.span>
                             <motion.span
                                 className="block"
@@ -68,7 +69,7 @@ export default function HeroSection({
                                     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
                                 }}
                             >
-                                Into Resilient <span className="text-gold">Infrastructure</span>
+                                Into Resilient Infrastructure
                             </motion.span>
                         </motion.h1>
                         <motion.div

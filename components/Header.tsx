@@ -67,6 +67,15 @@ export default function Header({
                     >
                         Projects
                     </a>
+                    <a href="#insights"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToBuffer("insights");
+                        }}
+                        className="hover:text-white transition-colors"
+                    >
+                        Insights
+                    </a>
                     <a href="#location"
                         onClick={(e) => {
                             e.preventDefault();
@@ -132,6 +141,18 @@ export default function Header({
                     >
                         Projects
                     </a>
+
+                    <a href="#insights"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            scrollToBuffer("insights");
+                            setMobileOpen(false);
+                        }}
+                        className="text-mist hover:text-white transition-colors"
+                    >
+                        Insights
+                    </a>
+
                     <a href="#location"
                         onClick={(e) => {
                             e.preventDefault();
