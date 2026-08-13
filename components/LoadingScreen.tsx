@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Logo from "@/components/Logo";
 
 const LoadingContext = createContext(false);
 export function useLoadingComplete() {
@@ -108,14 +108,7 @@ export default function LoadingScreen({ children }: { children: React.ReactNode 
                     className={`fixed inset-0 z-[100] flex flex-col items-center justify-center gap-6 bg-black transition-opacity duration-500 ease-out ${fading ? "opacity-0 pointer-events-none" : "opacity-100"
                         }`}
                 >
-                    <Image
-                        src="/images/logo-thinker.svg"
-                        alt="Thinker Engineering"
-                        width={180}
-                        height={34}
-                        priority
-                        className="w-36 md:w-44 h-auto"
-                    />
+                    <Logo className="w-36 md:w-44 h-auto" />
                     <div className="w-48 md:w-64 h-[2px] bg-white/15 overflow-hidden rounded-full">
                         <div
                             className="h-full bg-gold rounded-full"

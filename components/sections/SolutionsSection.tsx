@@ -111,7 +111,7 @@ export default function SolutionsSection() {
                         >
                             <div
                                 className={`relative w-[260px] md:w-[380px] h-[360px] md:h-[460px] rounded-2xl overflow-hidden transition-shadow duration-500 ${isActive
-                                    ? "shadow-[0_0_16px_3px_rgba(124,58,237,0.45)]"
+                                    ? "shadow-[0_0_16px_3px_rgba(234,179,8,0.45)]"
                                     : "shadow-2xl"
                                     }`}
                             >
@@ -124,7 +124,7 @@ export default function SolutionsSection() {
                                     priority={isActive}
                                 />
 
-                                <div className="absolute inset-0 bg-[#7c3aed]/50 mix-blend-color" />
+                                <div className="absolute inset-0 bg-[#eab308]/50 mix-blend-color" />
 
                                 {isActive ? (
                                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
@@ -169,7 +169,7 @@ export default function SolutionsSection() {
                             <button
                                 onClick={() => jumpTo(wrap(pos))}
                                 className={`mt-16 flex flex-col items-center gap-2 text-xs transition-colors
-                                ${isActive ? "text-gold" : "text-mist hover:text-white"}`}
+                                ${isActive ? "text-[#eab308]" : "text-mist hover:text-white"}`}
                             >
 
                                 <Icon size={22} />

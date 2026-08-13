@@ -3,7 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/sections/HeroSection";
-import BlueprintZone from "@/components/BlueprintZone";
+import SpecialistSection from "@/components/sections/SpecialistSection";
+import OperationsSection from "@/components/sections/OperationsSection";
+import SolutionsSection from "@/components/sections/SolutionsSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
+import InsightsSection from "@/components/sections/InsightsSection";
+import LocationSection from "@/components/sections/LocationSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 type Partner = { name: string; src: string };
 
@@ -28,7 +34,13 @@ export default function HomeClient({
                 {mounted && (
                     <>
                         <HeroSection partners={partners} scrollRef={scrollRef} />
-                        <BlueprintZone scrollRef={scrollRef} certifications={certifications} />
+                        <SpecialistSection />
+                        <OperationsSection certifications={certifications} />
+                        <SolutionsSection />
+                        <ProjectsSection />
+                        <InsightsSection />
+                        <LocationSection />
+                        <ContactSection />
                     </>
                 )}
             </main>

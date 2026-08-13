@@ -6,24 +6,7 @@ import { lifecycle } from "@/lib/data";
 
 type Cert = { name: string; src: string };
 
-// tuning for the "take turns" pulse loop on Design / Audit / Execution / Maintenance
-const PULSE_DURATION = 0.5;
-const PAUSE_BETWEEN = 0.7;
-const TURN_LENGTH = PULSE_DURATION + PAUSE_BETWEEN;
-
-// entrance timing for the list items (must match the values used below)
-const ENTRANCE_DURATION = 0.6;
-const ENTRANCE_STAGGER = 0.15;
-const LIST_LENGTH = 4; // Design, Audit, Execution, Maintenance
-
-// pulse loop starts only once the LAST list item has fully finished appearing,
-// plus a small breathing-room buffer
-const LOOP_START_DELAY = 1 +
-    ENTRANCE_DURATION + (LIST_LENGTH - 1) * ENTRANCE_STAGGER + 0.4;
-
 export default function OperationsSection({ certifications }: { certifications: Cert[] }) {
-    const totalLoop = TURN_LENGTH * lifecycle.length;
-
     return (
         <section className="snap-section flex px-6 md:px-16 py-24">
             <div style={{ maxWidth: "896px", width: "100%", margin: "0 auto" }}>
@@ -72,20 +55,10 @@ export default function OperationsSection({ certifications }: { certifications: 
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true, amount: 0.4 }}
                                     transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                                    whileHover={{ color: "#a855f7", x: 4 }}
-                                    className="text-3xl md:text-4xl font-medium cursor-default"
+                                    whileHover={{ color: "#d8b4fe", x: 4 }}
+                                    className="text-3xl md:text-4xl font-medium cursor-default text-gold"
                                 >
-                                    <motion.span
-                                        className="inline-block"
-                                        animate={{ scale: [1, 1.15, 1] }}
-                                        transition={{
-                                            duration: PULSE_DURATION,
-                                            delay: LOOP_START_DELAY + index * TURN_LENGTH,
-                                            ease: "easeInOut",
-                                        }}
-                                    >
-                                        {step}
-                                    </motion.span>
+                                    {step}
                                 </motion.li>
                             ))}
                         </ul>
