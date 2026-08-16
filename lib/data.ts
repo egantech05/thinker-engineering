@@ -25,123 +25,71 @@ export const lifecycle = ["Design", "Audit", "Execution", "Maintenance"];
 
 export const services = [
     {
-        key: "power",
-        title: "Power Management",
-        icon: "Zap",
-        image: "/images/solutions/ups.png",
-        description: "Reliable, redundant power infrastructure for critical facilities.",
-        bullets: [
-            "UPS Sales & Installation",
-            "Preventive Maintenance",
-            "Load Bank Testing",
-            "Battery Replacement",
-        ],
+        key: "dcec",
+        acronym: "DCEC",
+        title: "Data Center Engineering & Consultancy",
+        icon: "Building2",
+        description: "End-to-end engineering and consultancy for mission-critical data center facilities, from design through commissioning.",
+        href: "#contact",
     },
     {
-        key: "cooling",
-        title: "Cooling System",
-        icon: "Droplets",
-        image: "/images/solutions/cooling.png",
-        description: "Precision cooling solutions to keep critical loads within spec.",
-        bullets: [
-            "CRAC / CRAH Units",
-            "Cooling Design & Sizing",
-            "Airflow Optimization",
-            "Maintenance Contracts",
-        ],
+        key: "inc",
+        acronym: "INC",
+        title: "IT Infrastructure, Networks & Cybersecurity",
+        icon: "Network",
+        description: "Resilient IT infrastructure, network architecture, and cybersecurity solutions built for enterprise-grade reliability.",
+        href: "#contact",
     },
     {
-        key: "security",
-        title: "Security System",
-        icon: "Camera",
-        image: "/images/solutions/security.png",
-        description: "Layered physical security for restricted data center zones.",
-        bullets: [
-            "Access Control Systems",
-            "CCTV Surveillance",
-            "Biometric Verification",
-            "Perimeter Security",
-        ],
+        key: "msp",
+        acronym: "MSP",
+        title: "Managed Service Provider",
+        icon: "Headset",
+        description: "Proactive managed services and 24/7 support to keep your critical systems running at peak performance.",
+        href: "#contact",
     },
     {
-        key: "complete",
-        title: "Complete Solutions",
-        headline: "End-to-End Solutions & Support",
-        icon: "Share2",
-        image: "/images/solutions/complete-solution.png",
-        description: "End-to-end solution for data center infrastructure",
-        bullets: [
-            "Data Center Risk Assessment (DCRA)",
-            "Threat Vulnerability Risk Assessment (TVRA)",
-            "Consultation",
-            "New design or Retrofitting",
-        ],
+        key: "cds",
+        acronym: "CDS",
+        title: "Cloud & Digital Solutions",
+        icon: "Cloud",
+        description: "Cloud migration, digital transformation, and scalable infrastructure solutions tailored to your business.",
+        href: "#contact",
     },
     {
-        key: "monitoring",
-        title: "Monitoring System",
-        icon: "Monitor",
-        image: "/images/solutions/monitor.png",
-        description: "Real-time visibility into every critical system, 24/7.",
-        bullets: [
-            "DCIM Integration",
-            "Environmental Sensors",
-            "Remote Monitoring",
-            "Alerting & Reporting",
-        ],
-    },
-    {
-        key: "fire",
-        title: "Fire Safety System",
-        icon: "FlameKindling",
-        image: "/images/solutions/fire.png",
-        description: "Early detection and suppression built for critical environments.",
-        bullets: [
-            "VESDA Detection",
-            "Clean Agent Suppression",
-            "Fire Alarm Systems",
-            "Compliance & Testing",
-        ],
-    },
-    {
-        key: "cabling",
-        title: "Racks & Cabling",
-        icon: "Server",
-        image: "/images/solutions/cable.png",
-        description: "Structured cabling built for performance and scalability.",
-        bullets: [
-            "Fiber & Copper Cabling",
-            "Rack & Cabinet Installation",
-            "Cable Management",
-            "Testing & Certification",
-        ],
+        key: "dcps",
+        acronym: "DCPS",
+        title: "Data Center Procurement Specialist",
+        icon: "ShoppingCart",
+        description: "Strategic sourcing and procurement of data center equipment, ensuring quality and cost-efficiency.",
+        href: "#contact",
     },
 ];
 
 
 export const projects = [
     {
-        year: "2026", partner: "PETRONAS", logo: "/images/partner/pet.png", color: "#00A19B", background: "/images/projects/project1.jpg",
+        year: "2026", partner: "PETRONAS", logo: "/images/trustedBy/pet.png", color: "#00A19B", background: "/images/projects/project1.jpg",
         description: "Full UPS and power redundancy upgrade for a Tier III facility, ensuring uninterrupted uptime."
     },
     {
-        year: "2026", partner: "PLUS", logo: "/images/partner/pls.png", color: "#0061AA", background: "/images/projects/project2.jpg",
+        year: "2026", partner: "PLUS", logo: "/images/trustedBy/pls.png", color: "#0061AA", background: "/images/projects/project2.jpg",
         description: "Precision cooling retrofit to eliminate hot-spot risk and stabilize temperatures across the hall."
     },
     {
-        year: "2025", partner: "FKP", logo: "/images/partner/fkp.png", color: "#FF8824", background: "/images/projects/project3.jpg",
+        year: "2025", partner: "FKP", logo: "/images/trustedBy/fkp.png", color: "#FF8824", background: "/images/projects/project3.jpg",
         description: "End-to-end DCRA and TVRA risk assessment carried out ahead of a colocation expansion."
     },
     {
-        year: "2023", partner: "JAYKR", logo: "/images/partner/jaykr.png", color: "#FED416", background: "/images/projects/project4.jpg",
+        year: "2023", partner: "JAYKR", logo: "/images/trustedBy/jaykr.png", color: "#FED416", background: "/images/projects/project4.jpg",
         description: "Structured fiber and copper cabling with full rack build-out for a new server hall."
     },
     {
-        year: "2022", partner: "PETRONAS", logo: "/images/partner/pet.png", color: "#00A19B", background: "/images/projects/project5.jpg",
+        year: "2022", partner: "PETRONAS", logo: "/images/trustedBy/pet.png", color: "#00A19B", background: "/images/projects/project5.jpg",
         description: "Integrated fire suppression and early-detection system deployed across the entire facility hall."
     },
     {
-        year: "2020", partner: "PLUS", logo: "/images/partner/pls.png", color: "#0061AA", background: "/images/projects/project6.jpg",
+        year: "2020", partner: "PLUS", logo: "/images/trustedBy/pls.png", color: "#0061AA", background: "/images/projects/project6.jpg",
         description: "24/7 DCIM monitoring rollout covering power, cooling, and security systems in real time."
     },
 ];

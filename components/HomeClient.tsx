@@ -5,20 +5,23 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/sections/HeroSection";
 import SpecialistSection from "@/components/sections/SpecialistSection";
 import OperationsSection from "@/components/sections/OperationsSection";
-import SolutionsSection from "@/components/sections/SolutionsSection";
+import ServicesSection from "@/components/sections/ServicesSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import InsightsSection from "@/components/sections/InsightsSection";
 import LocationSection from "@/components/sections/LocationSection";
 import ContactSection from "@/components/sections/ContactSection";
+import PartnershipSection from "@/components/sections/PartnershipSection";
 
 type Partner = { name: string; src: string };
 
 export default function HomeClient({
     partners,
     certifications,
+    partnership,
 }: {
     partners: Partner[];
     certifications: Partner[];
+    partnership: Partner[];
 }) {
     const scrollRef = useRef<HTMLElement>(null);
     const [mounted, setMounted] = useState(false);
@@ -35,8 +38,9 @@ export default function HomeClient({
                     <>
                         <HeroSection partners={partners} scrollRef={scrollRef} />
                         <SpecialistSection />
+                        <PartnershipSection partnership={partnership} />
                         <OperationsSection certifications={certifications} />
-                        <SolutionsSection />
+                        <ServicesSection />
                         <ProjectsSection />
                         <InsightsSection />
                         <LocationSection />
