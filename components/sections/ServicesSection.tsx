@@ -76,7 +76,7 @@ export default function ServicesSection() {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         className="flex flex-col justify-center p-6 md:p-8"
                     >
-                        <h2 className="text-3xl md:text-4xl font-medium leading-tight mb-3">
+                        <h2 className="text-6xl md:text-4xl font-medium leading-tight mb-3">
                             Infrastructure Solutions Built to Perform
                         </h2>
                         <p className="text-sm text-mist mb-6">

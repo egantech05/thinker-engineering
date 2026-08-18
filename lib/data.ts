@@ -67,32 +67,72 @@ export const services = [
 ];
 
 
-export const projects = [
+export const experiences = [
     {
-        year: "2026", partner: "PETRONAS", logo: "/images/trustedBy/pet.png", color: "#00A19B", background: "/images/projects/project1.jpg",
-        description: "Full UPS and power redundancy upgrade for a Tier III facility, ensuring uninterrupted uptime."
+        title: "Hyperscale Data Center / Co-location Providers",
+        description: "Sourced and procured specialised tools and high-value equipment from suppliers worldwide, coordinating logistics and the full supply chain to ensure safe, on-time delivery to site in Malaysia.",
+        image: "/images/projects/project1.jpg",
+        tint: "blue",
+        size: "tall",
     },
     {
-        year: "2026", partner: "PLUS", logo: "/images/trustedBy/pls.png", color: "#0061AA", background: "/images/projects/project2.jpg",
-        description: "Precision cooling retrofit to eliminate hot-spot risk and stabilize temperatures across the hall."
+        title: "IT Infrastructure, Networks & Cybersecurity",
+        description: "Carried out engineering assessment and project execution to retrofit and revamp an ageing server room into a new, modern facility.",
+        image: "/images/projects/project2.jpg",
+        tint: "gold",
+        size: "normal",
     },
     {
-        year: "2025", partner: "FKP", logo: "/images/trustedBy/fkp.png", color: "#FF8824", background: "/images/projects/project3.jpg",
-        description: "End-to-end DCRA and TVRA risk assessment carried out ahead of a colocation expansion."
+        title: "Data Center Engineering & Consultancy",
+        description: "Delivered a Data Center Risk Assessment (DCRA) aligned with Bank Negara Malaysia's RMiT framework, alongside Threat & Vulnerability Risk Assessment (TVRA) and Network Resilience Assessment (NRA).",
+        image: "/images/projects/project3.jpg",
+        tint: "blue",
+        size: "wide",
     },
     {
-        year: "2023", partner: "JAYKR", logo: "/images/trustedBy/jaykr.png", color: "#FED416", background: "/images/projects/project4.jpg",
-        description: "Structured fiber and copper cabling with full rack build-out for a new server hall."
+        title: "Banking, Financial Services & Insurance",
+        description: "Conducted RMiT-aligned Data Center Risk Assessment (DCRA), Threat & Vulnerability Risk Assessment (TVRA), and Network Resilience Assessment (NRA) to strengthen server room and data center resilience.",
+        image: "/images/projects/project4.jpg",
+        tint: "gold",
+        size: "normal",
     },
     {
-        year: "2022", partner: "PETRONAS", logo: "/images/trustedBy/pet.png", color: "#00A19B", background: "/images/projects/project5.jpg",
-        description: "Integrated fire suppression and early-detection system deployed across the entire facility hall."
+        title: "Government-Linked Companies",
+        description: "Engaged as procurement specialist to source, coordinate, and deliver data centre equipment, tools, consumables, and supporting infrastructure per operational and project requirements.",
+        image: "/images/projects/project5.jpg",
+        tint: "blue",
+        size: "normal",
     },
     {
-        year: "2020", partner: "PLUS", logo: "/images/trustedBy/pls.png", color: "#0061AA", background: "/images/projects/project6.jpg",
-        description: "24/7 DCIM monitoring rollout covering power, cooling, and security systems in real time."
+        title: "Oil & Gas",
+        description: "Provided dependable IT and data centre support to sustain the availability, reliability, and operational performance of critical technology infrastructure.",
+        image: "/images/projects/project6.jpg",
+        tint: "gold",
+        size: "tall",
+    },
+    {
+        title: "Government",
+        description: "Delivered reliable IT infrastructure for the client's office, maintaining availability and operational performance of its technology and supporting facilities.",
+        image: "/images/projects/project4.jpg",
+        tint: "blue",
+        size: "normal",
+    },
+    {
+        title: "Telecommunication",
+        description: "Provided data centre engineering and consultancy support to assess infrastructure resiliency, identify risks, and improve overall data centre readiness.",
+        image: "/images/projects/project1.jpg",
+        tint: "gold",
+        size: "wide",
+    },
+    {
+        title: "Cooperative (Co-op) Organisations",
+        description: "Delivered digital AI solutions to improve management, monitoring, and operational visibility of the technology environment, with a focus on member groups.",
+        image: "/images/projects/project3.jpg",
+        tint: "blue",
+        size: "normal",
     },
 ];
+
 export const locations = [
     {
         label: "Headquarter",

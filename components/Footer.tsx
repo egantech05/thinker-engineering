@@ -4,7 +4,7 @@ import { contact } from "@/lib/data";
 const exploreLinks = [
     { label: "Specialist", href: "#specialist" },
     { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
+    { label: "Experience", href: "#experience" },
     { label: "Insights", href: "#insights" },
     { label: "Location", href: "#location" },
 ];

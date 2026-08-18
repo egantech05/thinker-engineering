@@ -6,7 +6,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import SpecialistSection from "@/components/sections/SpecialistSection";
 import OperationsSection from "@/components/sections/OperationsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import ProjectsSection from "@/components/sections/ProjectsSection";
+import ExperienceSection from "@/components/sections/ExperienceSection";
 import InsightsSection from "@/components/sections/InsightsSection";
 import LocationSection from "@/components/sections/LocationSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -41,7 +41,7 @@ export default function HomeClient({
                         <PartnershipSection partnership={partnership} />
                         <OperationsSection certifications={certifications} />
                         <ServicesSection />
-                        <ProjectsSection />
+                        <ExperienceSection />
                         <InsightsSection />
                         <LocationSection />
                         <ContactSection />

@@ -45,7 +45,7 @@ function InsightCard({
                 <motion.div
                     whileHover={{ scale: 1.03, y: -6 }}
                     transition={{ duration: 0.1, ease: "easeOut" }}
-                    className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50"
+                    className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50"
                 >
                     {item.image && (
                         <motion.div

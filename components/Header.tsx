@@ -64,14 +64,14 @@ ${scrolled
                     <nav className="hidden md:flex items-center gap-8 text-sm text-mist">
                         <a href="#specialist" className="hover:text-white transition-colors">About</a>
                         <a href="#services" className="hover:text-white transition-colors">Services</a>
-                        <a href="#projects"
+                        <a href="#experience"
                             onClick={(e) => {
                                 e.preventDefault();
-                                scrollToBuffer("projects");
+                                scrollToBuffer("experience");
                             }}
                             className="hover:text-white transition-colors"
                         >
-                            Projects
+                            Experience
                         </a>
                         <a href="#insights"
                             onClick={(e) => {
@@ -140,15 +140,15 @@ ${scrolled
                 <div className="md:hidden fixed top-[64px] left-0 right-0 z-40 bg-ink/95 backdrop-blur-md border-b border-white/10 px-6 py-6 flex flex-col gap-4">
                     <a href="#specialist" onClick={() => setMobileOpen(false)} className="text-mist hover:text-white transition-colors">About</a>
                     <a href="#services" onClick={() => setMobileOpen(false)} className="text-mist hover:text-white transition-colors">Services</a>
-                    <a href="#projects"
+                    <a href="#experience"
                         onClick={(e) => {
                             e.preventDefault();
-                            scrollToBuffer("projects");
+                            scrollToBuffer("experience");
                             setMobileOpen(false);
                         }}
                         className="text-mist hover:text-white transition-colors"
                     >
-                        Projects
+                        Experience
                     </a>
 
                     <a href="#insights"
