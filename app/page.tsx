@@ -1,4 +1,4 @@
-import HomeClient from "@/components/HomeClient";
+import HomeClient from "@/components/home/HomeClient";
 import { getPartnerLogos } from "@/lib/trustedBy";
 import { getCertLogos } from "@/lib/certs";
 import { getPartnershipLogos } from "@/lib/partnership";

@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Header from "@/components/Header";
-import HeroSection from "@/components/sections/HeroSection";
-import SpecialistSection from "@/components/sections/SpecialistSection";
-import OperationsSection from "@/components/sections/OperationsSection";
-import ServicesSection from "@/components/sections/ServicesSection";
-import ExperienceSection from "@/components/sections/ExperienceSection";
-import InsightsSection from "@/components/sections/InsightsSection";
-import LocationSection from "@/components/sections/LocationSection";
-import ContactSection from "@/components/sections/ContactSection";
-import PartnershipSection from "@/components/sections/PartnershipSection";
+import Header from "@/components/layout/Header";
+import HeroSection from "@/components/home/sections/HeroSection";
+import SpecialistSection from "@/components/home/sections/SpecialistSection";
+import OperationsSection from "@/components/home/sections/OperationsSection";
+import ServicesSection from "@/components/home/sections/ServicesSection";
+import ExperienceSection from "@/components/home/sections/ExperienceSection";
+import InsightsSection from "@/components/home/sections/InsightsSection";
+import LocationSection from "@/components/home/sections/LocationSection";
+import ContactSection from "@/components/home/sections/ContactSection";
+import PartnershipSection from "@/components/home/sections/PartnershipSection";
 
 type Partner = { name: string; src: string };
 

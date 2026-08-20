@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
 import { contact } from "@/lib/data";
 
 export default function ContactSection() {

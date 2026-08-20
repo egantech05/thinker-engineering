@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import LoadingScreen from "@/components/LoadingScreen";
+import LoadingScreen from "@/components/layout/LoadingScreen";
 
 export const metadata: Metadata = {
   title: "Thinker Engineering | Data Center Consultancy",

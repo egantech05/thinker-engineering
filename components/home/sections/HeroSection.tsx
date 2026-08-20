@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useLoadingComplete } from "@/components/LoadingScreen";
+import { useLoadingComplete } from "@/components/layout/LoadingScreen";
 import { stats } from "@/lib/data";
 import Counter from "@/components/Counter";
 
