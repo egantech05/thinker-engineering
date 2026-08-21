@@ -11,7 +11,7 @@ const exploreLinks = [
 
 export default function Footer() {
     return (
-        <footer className="mt-24 -mx-6 md:-mx-16 bg-[#050913] text-white text-sm">
+        <footer className="bg-[#050913] text-white text-sm">
             <div className="max-w-6xl mx-auto px-6 md:px-16 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-12 md:gap-20">
                     <div>

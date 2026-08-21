@@ -121,7 +121,9 @@ export default function ContactSection() {
                 </motion.div>
             </div>
 
-            <Footer />
+            <div className="mt-24 -mx-6 md:-mx-16">
+                <Footer />
+            </div>
         </section>
     );
 }

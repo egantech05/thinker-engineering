@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLoadingComplete } from "@/components/layout/LoadingScreen";
+
 export default function Counter({
     value,
     duration = 1.5,

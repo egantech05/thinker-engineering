@@ -8,11 +8,12 @@ import NavDropdown from "@/components/layout/NavDropdown";
 import { navItems } from "@/lib/nav";
 import MobileNavAccordion from "@/components/layout/MobileNavAccordion";
 import NavMegaPanel from "@/components/layout/NavMegaPanel";
+import Link from "next/link";
 
 export default function Header({
     scrollRef,
 }: {
-    scrollRef: React.RefObject<HTMLElement | null>;
+    scrollRef?: React.RefObject<HTMLElement | null>;
 }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,22 +32,31 @@ export default function Header({
     };
 
     useEffect(() => {
-        const el = scrollRef.current;
-        if (!el) return;
-        const onScroll = () => setScrolled(el.scrollTop > 40);
-        el.addEventListener("scroll", onScroll, { passive: true });
-        return () => el.removeEventListener("scroll", onScroll);
+        const el = scrollRef?.current;
+        if (el) {
+            const onScroll = () => setScrolled(el.scrollTop > 40);
+            el.addEventListener("scroll", onScroll, { passive: true });
+            return () => el.removeEventListener("scroll", onScroll);
+        }
+        const onScroll = () => setScrolled(window.scrollY > 40);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => window.removeEventListener("scroll", onScroll);
     }, [scrollRef]);
 
     const scrollToBuffer = (id: string) => {
-        const container = scrollRef.current;
         const buffer = document.getElementById(id);
-        if (!container || !buffer) return;
-        const target =
-            buffer.getBoundingClientRect().top -
-            container.getBoundingClientRect().top +
-            container.scrollTop;
-        container.scrollTo({ top: target, behavior: "smooth" });
+        if (!buffer) return;
+        const container = scrollRef?.current;
+        if (container) {
+            const target =
+                buffer.getBoundingClientRect().top -
+                container.getBoundingClientRect().top +
+                container.scrollTop;
+            container.scrollTo({ top: target, behavior: "smooth" });
+        } else {
+            buffer.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
     };
 
     return (
@@ -59,11 +69,16 @@ ${scrolled
                             : "max-w-[1800px] mt-0 mx-0 px-6 md:px-10 py-4 bg-transparent"
                         }`}
                 >
-                    <button
-                        type="button"
-                        onClick={() => scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" })}
+                    <Link
+                        href="/"
+                        onClick={(e) => {
+                            if (scrollRef?.current) {
+                                e.preventDefault();
+                                scrollRef.current.scrollTo({ top: 0, behavior: "smooth" });
+                            }
+                        }}
                         className="flex items-center gap-3 h-8"
-                        aria-label="Back to top"
+                        aria-label="Go to homepage"
                     >
                         <AnimatePresence mode="popLayout" initial={false}>
                             <motion.div
@@ -76,7 +91,7 @@ ${scrolled
                                 <Logo variant={scrolled ? "icon" : "full"} className="h-7 md:h-8 w-auto" />
                             </motion.div>
                         </AnimatePresence>
-                    </button>
+                    </Link>
 
                     <nav className="hidden md:flex items-center gap-8 text-sm text-mist">
                         {navItems.map((item) => (
