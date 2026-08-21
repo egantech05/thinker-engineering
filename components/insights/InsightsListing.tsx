@@ -37,12 +37,14 @@ function FeaturedCard({ item }: { item: Insight }) {
             >
                 <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[340px] overflow-hidden bg-ink">
 
+
                     <Image
                         src={item.image}
                         alt=""
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover scale-[1.02] transition-transform duration-500 group-hover:scale-105"
+
                         priority
                     />
                 </div>
@@ -91,7 +93,8 @@ function InsightCard({ item, index }: { item: Insight; index: number }) {
                         alt=""
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-cover scale-[1.02] transition-transform duration-500 group-hover:scale-105"
+
                     />
                     <span className="absolute top-3 left-3 text-[11px] uppercase tracking-wide bg-gold text-ink font-semibold px-2.5 py-1 rounded-full">
                         {item.category}

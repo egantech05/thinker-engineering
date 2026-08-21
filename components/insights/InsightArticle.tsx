@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import {
@@ -61,8 +62,18 @@ function Block({ block }: { block: InsightBlock }) {
 }
 
 export default function InsightArticle({ item }: { item: Insight }) {
+    const router = useRouter();
     const related = relatedInsights(item.slug, 3);
     const hasContent = Boolean(item.body && item.body.length > 0);
+
+    const handleBack = () => {
+        if (window.history.length > 1) {
+            router.back();
+        } else {
+            router.push("/insights");
+        }
+    };
+
 
     return (
         <>
@@ -72,6 +83,21 @@ export default function InsightArticle({ item }: { item: Insight }) {
                     {/* ---------------- Article head ---------------- */}
                     <header className="px-6 md:px-16 pt-32 md:pt-44 pb-12">
                         <div className="max-w-3xl mx-auto w-full">
+                            <motion.button
+                                type="button"
+                                onClick={handleBack}
+                                initial={{ opacity: 0, x: -8 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                className="group inline-flex items-center gap-2 text-sm text-mist hover:text-white transition-colors mb-8 cursor-pointer"
+                            >
+                                <ArrowLeft
+                                    size={16}
+                                    className="transition-transform duration-300 group-hover:-translate-x-1"
+                                />
+                                Back
+                            </motion.button>
+
                             <motion.div
                                 initial={{ opacity: 0, y: 12 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -113,24 +139,22 @@ export default function InsightArticle({ item }: { item: Insight }) {
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                             className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden border border-white/10 bg-ink"
-
-
-
                         >
                             <Image
                                 src={item.image}
                                 alt=""
                                 fill
                                 sizes="100vw"
+                                className="object-cover scale-[1.02]"
 
-                                className="object-cover"
                                 priority
                             />
                         </motion.div>
                     </div>
 
                     {/* ---------------- Body ---------------- */}
-                    <div className="px-4 md:px-8 mb-14 md:mb-20">
+                    <div className="px-6 md:px-16 pb-20 md:pb-28">
+
 
 
                         <motion.div

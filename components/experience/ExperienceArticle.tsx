@@ -117,23 +117,25 @@ export default function ExperienceArticle({ study }: { study: ExperienceCaseStud
                     </header>
 
                     {/* ---------------- Featured image ---------------- */}
+                    {/* ---------------- Featured image ---------------- */}
                     <div className="px-6 md:px-16 mb-14 md:mb-20">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-                            className="max-w-5xl mx-auto relative aspect-[16/9] rounded-2xl overflow-hidden border border-white/10"
+                            className="relative w-full aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden"
                         >
                             <Image
                                 src={study.image}
                                 alt=""
                                 fill
-                                sizes="(max-width: 768px) 100vw, 1024px"
-                                className="object-cover"
+                                sizes="100vw"
+                                className="object-cover scale-[1.02]"
                                 priority
                             />
                         </motion.div>
                     </div>
+
 
                     {/* ---------------- Body ---------------- */}
                     <div className="px-6 md:px-16 pb-20 md:pb-28">
