@@ -1,4 +1,5 @@
 import { services, experiences } from "@/lib/data";
+import { hasCaseStudy } from "@/lib/experiences";
 
 export type NavSubItem = {
     label: string;
@@ -31,15 +32,22 @@ export const navItems: NavItem[] = [
     },
     {
         label: "Experience",
-        subItems: experiences.map((e) => ({
-            label: e.title,
-            href: `/#experience-${e.key}`,
-        })),
+        subItems: experiences
+            .filter((e) => hasCaseStudy(e.key))
+            .map((e) => ({
+                label: e.title,
+                href: `/experience/${e.key}`,
+            })),
     },
+
     {
         label: "Insights",
-        href: "/#insights",
+        subItems: [
+            { label: "Articles", href: "/insights?type=article" },
+            { label: "Company News", href: "/insights?type=news" },
+        ],
     },
+
     {
         label: "Location",
         href: "/#location",

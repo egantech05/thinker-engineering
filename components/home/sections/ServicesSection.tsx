@@ -2,22 +2,13 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import type { ComponentType } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-    Building2, Network, Headset, Cloud, ShoppingCart,
-    ArrowUpRight,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { services } from "@/lib/data";
 
 
-const icons: Record<string, ComponentType<{ size?: number; className?: string }>> = {
-    Building2, Network, Headset, Cloud, ShoppingCart,
-};
 
 function ServiceCard({ service, index }: { service: (typeof services)[number]; index: number }) {
-    const Icon = icons[service.icon];
-
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -29,9 +20,7 @@ function ServiceCard({ service, index }: { service: (typeof services)[number]; i
         >
             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_24px_2px_rgba(234,179,8,0.15)] pointer-events-none" />
 
-            <div className="flex items-start">
-                <Icon size={22} className="text-gold" />
-            </div>
+            <div className="h-[22px]" aria-hidden="true" />
 
             <div className="mt-8">
                 <h3 className="text-3xl md:text-4xl font-bold tracking-tight mb-2">

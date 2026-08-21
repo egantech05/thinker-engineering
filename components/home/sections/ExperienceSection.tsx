@@ -2,9 +2,12 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { experiences } from "@/lib/data";
+import { hasCaseStudy } from "@/lib/experiences";
+
 
 type Experience = (typeof experiences)[number];
 
@@ -24,8 +27,17 @@ function ExperienceCard({ exp, index }: { exp: Experience; index: number }) {
             transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
             className="group relative overflow-hidden row-span-2"
         >
+            {hasCaseStudy(exp.key) && (
+                <Link
+                    href={`/experience/${exp.key}`}
+                    aria-label={`Read the ${exp.title} case study`}
+                    className="absolute inset-0 z-10"
+                />
+            )}
+
             <div
                 className="absolute inset-0"
+
                 style={{
                     maskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
                     WebkitMaskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
@@ -54,10 +66,13 @@ function ExperienceCard({ exp, index }: { exp: Experience; index: number }) {
                 <p className="text-mist text-xs md:text-sm leading-relaxed mb-3 line-clamp-5">
                     {exp.description}
                 </p>
-                <span className="inline-flex items-center gap-1 text-sm font-medium text-gold w-fit">
-                    Read more
-                    <ArrowUpRight size={16} />
-                </span>
+                {hasCaseStudy(exp.key) && (
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-gold w-fit group-hover:gap-2 transition-all duration-300">
+                        Read more
+                        <ArrowUpRight size={16} />
+                    </span>
+                )}
+
             </div>
         </motion.div>
     );

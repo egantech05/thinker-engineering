@@ -5,7 +5,7 @@ const exploreLinks = [
     { label: "Specialist", href: "#specialist" },
     { label: "Services", href: "#services" },
     { label: "Experience", href: "#experience" },
-    { label: "Insights", href: "#insights" },
+    { label: "Insights", href: "/insights" },
     { label: "Location", href: "#location" },
 ];
 

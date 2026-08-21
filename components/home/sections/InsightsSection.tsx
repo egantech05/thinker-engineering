@@ -2,19 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
-import { insights } from "@/lib/data";
+import { insights, formatInsightDate, type Insight } from "@/lib/insights";
 
-type Insight = (typeof insights)[number];
 
-function formatDate(dateStr: string) {
-    return new Date(dateStr).toLocaleDateString("en-MY", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-    });
-}
 
 function InsightCard({
     item,
@@ -35,44 +28,47 @@ function InsightCard({
 
     return (
         <div className="shrink-0 w-64 md:w-80 snap-start">
-            <motion.a
-                href={item.link}
+            <motion.div
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={visible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
                 transition={{ type: "spring", stiffness: 30, damping: 30 }}
-                className="block group"
             >
-                <motion.div
-                    whileHover={{ scale: 1.03, y: -6 }}
-                    transition={{ duration: 0.1, ease: "easeOut" }}
-                    className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50"
-                >
-                    {item.image && (
-                        <motion.div
-                            className="absolute inset-0"
-                            whileHover={{ scale: 1.12 }}
-                            transition={{ duration: 0.1, ease: "easeOut" }}
-                        >
-                            <Image src={item.image} alt="" fill className="object-cover" />
-                        </motion.div>
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
-                    <span className="absolute top-3 left-3 text-[11px] uppercase tracking-wide bg-gold text-ink font-semibold px-2.5 py-1 rounded-full">
-                        {item.category}
-                    </span>
-                </motion.div>
+                <Link href={`/insights/${item.slug}`} className="block group">
 
-                <div className="mt-4">
-                    <p className="text-xs text-mist">{formatDate(item.date)}</p>
-                    <h3 className="text-base font-medium text-white mt-1 leading-snug group-hover:text-gold transition-colors">
-                        {item.title}
-                    </h3>
-                    <p className="text-xs text-mist mt-2 line-clamp-2">{item.excerpt}</p>
-                    <span className="inline-flex items-center gap-1 text-xs text-gold mt-3">
-                        Read more <ArrowUpRight size={13} />
-                    </span>
-                </div>
-            </motion.a>
+                    <motion.div
+                        whileHover={{ scale: 1.03, y: -6 }}
+                        transition={{ duration: 0.1, ease: "easeOut" }}
+                        className="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg shadow-black/0 transition-shadow duration-300 hover:shadow-black/50"
+                    >
+                        {item.image && (
+                            <motion.div
+                                className="absolute inset-0"
+                                whileHover={{ scale: 1.12 }}
+                                transition={{ duration: 0.1, ease: "easeOut" }}
+                            >
+                                <Image src={item.image} alt="" fill className="object-cover" />
+                            </motion.div>
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                        <span className="absolute top-3 left-3 text-[11px] uppercase tracking-wide bg-gold text-ink font-semibold px-2.5 py-1 rounded-full">
+                            {item.category}
+                        </span>
+                    </motion.div>
+
+                    <div className="mt-4">
+                        <p className="text-xs text-mist">{formatInsightDate(item.date)}</p>
+
+                        <h3 className="text-base font-medium text-white mt-1 leading-snug group-hover:text-gold transition-colors">
+                            {item.title}
+                        </h3>
+                        <p className="text-xs text-mist mt-2 line-clamp-2">{item.excerpt}</p>
+                        <span className="inline-flex items-center gap-1 text-xs text-gold mt-3">
+                            Read more <ArrowUpRight size={13} />
+                        </span>
+                    </div>
+                </Link>
+            </motion.div>
+
         </div>
     );
 }
