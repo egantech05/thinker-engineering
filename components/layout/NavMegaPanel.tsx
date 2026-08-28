@@ -50,7 +50,7 @@ export default function NavMegaPanel({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-0 right-0"
+                    className="absolute top-full -inset-x-px"
                 >
                     <div className="rounded-b-2xl border border-t-0 border-white/10 bg-[#050913]/95 backdrop-blur-lg shadow-lg shadow-black/40 px-6 md:px-10 py-6">
                         <div className="flex flex-wrap gap-x-16 gap-y-1">

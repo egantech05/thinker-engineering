@@ -9,14 +9,17 @@ export const pillars = [
     {
         title: "Uptime Assurance",
         body: "Continuous operations and equip businesses with future-ready data centers that evolve with their needs. We ensure every data center becomes a cornerstone of growth and innovation.",
+        image: "/images/datacenter-corridor.jpg",
     },
     {
         title: "Proactive Experts",
         body: "Swift and decisive response to tackle the most complex data center challenges. It's our mission to empower our customers to fully understand the intricacies of data centers that support long-term growth and resilience.",
+        image: "/images/hero-ceiling.png",
     },
     {
         title: "Operational Excellence",
         body: "We instill our customers with confidence in maintaining critical business operations and navigating the ever-evolving technological landscape. We bring you a more sustainable data center solution.",
+        image: "/images/projects/project4.jpg",
     },
 ];
 

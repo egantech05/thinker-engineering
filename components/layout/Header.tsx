@@ -18,6 +18,7 @@ export default function Header({
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const dropdownOpen = Boolean(activeDropdown);
     const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const handleDropdownEnter = (label: string) => {
@@ -65,7 +66,10 @@ export default function Header({
                 <div
                     className={`relative w-full flex items-center justify-between transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]
 ${scrolled
-                            ? "max-w-6xl mt-3 mx-4 md:mx-6 px-5 md:px-8 py-3 rounded-2xl bg-ink/35 backdrop-blur-lg border border-white/10 shadow-lg shadow-black/20"
+                            ? `max-w-6xl mt-3 mx-4 md:mx-6 px-5 md:px-8 py-3 backdrop-blur-lg shadow-lg shadow-black/20 ${dropdownOpen
+                                ? "bg-[#050913]/95 rounded-t-2xl border-t border-x border-white/10"
+                                : "bg-ink/35 rounded-2xl border border-white/10"
+                            }`
                             : "max-w-[1800px] mt-0 mx-0 px-6 md:px-10 py-4 bg-transparent"
                         }`}
                 >
