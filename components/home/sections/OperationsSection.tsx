@@ -61,9 +61,9 @@ export default function OperationsSection({ certifications }: { certifications: 
                                         src={c.src}
                                         alt={c.name}
                                         width={100}
-                                        height={20}
+                                        height={40}
                                         loading="eager"
-                                        className="h-6 md:h-6 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+                                        className="h-6 md:h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
                                     />
                                 </div>
                             ))

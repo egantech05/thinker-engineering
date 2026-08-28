@@ -96,13 +96,14 @@ export const caseStudies: ExperienceCaseStudy[] = [
             "Six of the top twenty banks in Malaysia, alongside international banks and financial institutions based in the country",
         image: "/images/projects/project4.jpg",
         requirement: [
-            "The clients required a Data Center Risk Assessment carried out against Bank Negara Malaysia's Risk Management in Technology framework, covering both server rooms and data center infrastructure.",
+            "The clients required a Data Center Risk Assessment (DCRA) carried out against Bank Negara Malaysia's Risk Management in Technology framework, covering both server rooms and data center infrastructure.",
             "Threat and Vulnerability Risk Assessment and Network Resilience Assessment were required alongside it.",
         ],
         scope: [
             "Pre-work assessment and planning",
             "Technical coordination with site representatives",
             "Drawing review and site assessment works",
+            "Data Center Risk Assessment (DCRA)",
             "Network Risk Assessment (NRA)",
             "Threat & Vulnerability Risk Assessment (TVRA)",
             "Complete DCRA report and handover documentation",

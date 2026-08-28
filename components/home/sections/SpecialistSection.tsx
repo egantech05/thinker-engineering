@@ -15,7 +15,7 @@ export default function SpecialistSection() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 3, ease: "easeOut" }}
                 whileHover={{ scale: 1.01 }}
-                className="max-w-6xl mx-auto w-full rounded-2xl md:rounded-3xl bg-black/40 backdrop-blur-sm p-8 md:p-14 transition-shadow duration-300 hover:shadow-2xl hover:shadow-black/40"
+                className="max-w-6xl mx-auto w-full p-8 md:p-14"
             >
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}

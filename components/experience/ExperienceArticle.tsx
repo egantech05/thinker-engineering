@@ -117,7 +117,6 @@ export default function ExperienceArticle({ study }: { study: ExperienceCaseStud
                     </header>
 
                     {/* ---------------- Featured image ---------------- */}
-                    {/* ---------------- Featured image ---------------- */}
                     <div className="px-6 md:px-16 mb-14 md:mb-20">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.98 }}
