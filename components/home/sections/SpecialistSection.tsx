@@ -8,7 +8,7 @@ export default function SpecialistSection() {
     return (
         <section
             id="specialist"
-            className="flex items-center bg-ink/60 md:bg-transparent px-4 md:px-8 pt-12 md:pt-24 pb-0 md:pb-2"
+            className="flex items-center bg-ink/60 md:bg-transparent px-4 md:px-8 pt-12 md:pt-24 pb-8 md:pb-12"
         >
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -60,7 +60,7 @@ export default function SpecialistSection() {
                             }}
                             whileHover={{ scale: 1.04, y: -6 }}
                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="relative overflow-hidden flex flex-col justify-end max-w-6xl mx-auto w-full min-h-[300px] md:min-h-[360px] rounded-2xl md:rounded-3xl p-8 md:p-14 transition-shadow duration-300 hover:shadow-2xl hover:shadow-black/40"
+                            className="relative overflow-hidden flex flex-col justify-end max-w-6xl mx-auto w-full min-h-[260px] md:min-h-[360px] rounded-2xl md:rounded-3xl p-8 md:p-14 transition-shadow duration-300 hover:shadow-2xl hover:shadow-black/40"
                         >
                             <Image
                                 src={p.image}
