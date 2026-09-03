@@ -65,72 +65,7 @@ export const services = [
 ];
 
 
-export const experiences = [
-    {
-        key: "hyperscale-dc",
-        title: "Hyperscale Data Center / Co-location Providers",
-        description: "Sourced and procured specialised tools and high-value equipment from suppliers worldwide, coordinating logistics and the full supply chain to ensure safe, on-time delivery to site in Malaysia.",
-        image: "/images/projects/project1.jpg",
-        tint: "blue",
 
-    },
-    {
-        key: "it-infrastructure",
-        title: "IT Infrastructure, Networks & Cybersecurity",
-        description: "Carried out engineering assessment and project execution to retrofit and revamp an ageing server room into a new, modern facility.",
-        image: "/images/projects/project2.jpg",
-        tint: "gold",
-
-    },
-    {
-        key: "bfsi",
-        title: "Banking, Financial Services & Insurance",
-        description: "Conducted RMiT-aligned Data Center Risk Assessment (DCRA), Threat & Vulnerability Risk Assessment (TVRA), and Network Resilience Assessment (NRA) to strengthen server room and data center resilience.",
-        image: "/images/projects/project4.jpg",
-        tint: "gold",
-
-    },
-    {
-        key: "glc",
-        title: "Government-Linked Companies",
-        description: "Engaged as procurement specialist to source, coordinate, and deliver data centre equipment, tools, consumables, and supporting infrastructure per operational and project requirements.",
-        image: "/images/projects/project5.jpg",
-        tint: "blue",
-
-    },
-    {
-        key: "oil-gas",
-        title: "Oil & Gas",
-        description: "Provided dependable IT and data centre support to sustain the availability, reliability, and operational performance of critical technology infrastructure.",
-        image: "/images/projects/project6.jpg",
-        tint: "gold",
-
-    },
-    {
-        key: "government",
-        title: "Government",
-        description: "Delivered reliable IT infrastructure for the client's office, maintaining availability and operational performance of its technology and supporting facilities.",
-        image: "/images/projects/project4.jpg",
-        tint: "blue",
-
-    },
-    {
-        key: "telco",
-        title: "Telecommunication",
-        description: "Provided data centre engineering and consultancy support to assess infrastructure resiliency, identify risks, and improve overall data centre readiness.",
-        image: "/images/projects/project1.jpg",
-        tint: "gold",
-
-    },
-    {
-        key: "coop",
-        title: "Cooperative (Co-op) Organisations",
-        description: "Delivered digital AI solutions to improve management, monitoring, and operational visibility of the technology environment, with a focus on member groups.",
-        image: "/images/projects/project3.jpg",
-        tint: "blue",
-
-    },
-];
 
 export const locations = [
     {

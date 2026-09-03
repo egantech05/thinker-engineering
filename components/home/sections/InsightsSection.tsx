@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
-import { insights, formatInsightDate, type Insight } from "@/lib/insights";
+import { ChevronLeft, ChevronRight, ArrowUpRight, ArrowRight } from "lucide-react";
+import { formatInsightDate, type Insight } from "@/lib/insights";
 
 
 
@@ -73,7 +73,7 @@ function InsightCard({
     );
 }
 
-export default function InsightsSection() {
+export default function InsightsSection({ insights }: { insights: Insight[] }) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const sectionRef = useRef(null);
     const hasAppeared = useInView(sectionRef, { once: true, amount: 0.2 });
@@ -128,6 +128,16 @@ export default function InsightsSection() {
                     >
                         <ChevronRight size={18} />
                     </button>
+                </div>
+
+                <div className="mt-8 flex justify-end">
+                    <Link
+                        href="/insights"
+                        className="group inline-flex items-center gap-1 text-sm font-medium text-gold hover:gap-2 transition-all duration-300"
+                    >
+                        Discover more
+                        <ArrowRight size={16} />
+                    </Link>
                 </div>
             </div>
         </section>

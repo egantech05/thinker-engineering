@@ -7,8 +7,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { jobs } from "@/lib/jobs";
 import ApplicationForm from "@/components/career/ApplicationForm";
+import type { NavItem } from "@/lib/nav";
 
-export default function CareerClient() {
+export default function CareerClient({ navItems }: { navItems: NavItem[] }) {
     const [openJob, setOpenJob] = useState<string | null>(null);
     const [position, setPosition] = useState("");
 
@@ -23,7 +24,7 @@ export default function CareerClient() {
 
     return (
         <>
-            <Header />
+            <Header navItems={navItems} />
             <main>
                 {/* ---------------- Hero ---------------- */}
                 <section className="px-6 md:px-16 pt-32 md:pt-44 pb-20 md:pb-28">

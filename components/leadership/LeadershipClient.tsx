@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { leaders, type Leader } from "@/lib/leaders";
+import type { Leader } from "@/lib/leaders";
+import type { NavItem } from "@/lib/nav";
 
 function LeaderDetailSection({ leader, zIndex }: { leader: Leader; zIndex: number }) {
     return (
@@ -56,14 +57,14 @@ function LeaderDetailSection({ leader, zIndex }: { leader: Leader; zIndex: numbe
     );
 }
 
-export default function LeadershipClient() {
+export default function LeadershipClient({ leaders, navItems }: { leaders: Leader[]; navItems: NavItem[] }) {
     const scrollToLeader = (key: string) => {
         document.getElementById(`leader-${key}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     return (
         <>
-            <Header />
+            <Header navItems={navItems} />
             <main>
                 <section
                     id="leadership-top"

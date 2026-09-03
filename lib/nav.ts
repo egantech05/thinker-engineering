@@ -1,5 +1,4 @@
-import { services, experiences } from "@/lib/data";
-import { hasCaseStudy } from "@/lib/experiences";
+import { createClient } from "@/lib/supabase/server";
 
 export type NavSubItem = {
     label: string;
@@ -13,43 +12,43 @@ export type NavItem = {
     subItems?: NavSubItem[];
 };
 
-export const navItems: NavItem[] = [
-    {
-        label: "Company",
-        subItems: [
-            { label: "About Us", href: "/#specialist" },
-            { label: "Leadership", href: "/leadership" },
-            { label: "Career", href: "/career" },
-        ],
-    },
-    {
-        label: "Service",
-        subItems: services.map((s) => ({
-            label: s.title,
-            href: `/services/${s.key}`,
-            description: s.description,
-        })),
-    },
-    {
-        label: "Experience",
-        subItems: experiences
-            .filter((e) => hasCaseStudy(e.key))
-            .map((e) => ({
-                label: e.title,
-                href: `/experience/${e.key}`,
+export async function getNavItems(): Promise<NavItem[]> {
+    const supabase = await createClient();
+
+    const { data: services } = await supabase
+        .from("services")
+        .select("key, title, tagline")
+        .eq("status", "published")
+        .order("sort_order");
+
+    return [
+        {
+            label: "Company",
+            subItems: [
+                { label: "About Us", href: "/#specialist" },
+                { label: "Leadership", href: "/leadership" },
+                { label: "Career", href: "/career" },
+            ],
+        },
+        {
+            label: "Service",
+            subItems: (services ?? []).map((s) => ({
+                label: s.title,
+                href: `/services/${s.key}`,
+                description: s.tagline ?? undefined,
             })),
-    },
-
-    {
-        label: "Insights",
-        subItems: [
-            { label: "Articles", href: "/insights?type=article" },
-            { label: "Company News", href: "/insights?type=news" },
-        ],
-    },
-
-    {
-        label: "Location",
-        href: "/#location",
-    },
-];
+        },
+        {
+            label: "Experience",
+            href: "/experience",
+        },
+        {
+            label: "Insights",
+            subItems: [
+                { label: "Articles", href: "/insights?type=article" },
+                { label: "Company News", href: "/insights?type=news" },
+            ],
+        },
+        { label: "Location", href: "/#location" },
+    ];
+}

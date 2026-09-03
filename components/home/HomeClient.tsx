@@ -11,17 +11,26 @@ import InsightsSection from "@/components/home/sections/InsightsSection";
 import LocationSection from "@/components/home/sections/LocationSection";
 import ContactSection from "@/components/home/sections/ContactSection";
 import PartnershipSection from "@/components/home/sections/PartnershipSection";
+import type { Insight } from "@/lib/insights";
+import type { Experience } from "@/lib/experiences";
+import type { NavItem } from "@/lib/nav";
 
 type Partner = { name: string; src: string };
 
 export default function HomeClient({
+    navItems,
     partners,
     certifications,
     partnership,
+    insights,
+    experiences,
 }: {
+    navItems: NavItem[];
     partners: Partner[];
     certifications: Partner[];
     partnership: Partner[];
+    insights: Insight[];
+    experiences: Experience[];
 }) {
     const scrollRef = useRef<HTMLElement>(null);
     const [mounted, setMounted] = useState(false);
@@ -32,7 +41,7 @@ export default function HomeClient({
 
     return (
         <>
-            <Header scrollRef={scrollRef} />
+            <Header scrollRef={scrollRef} navItems={navItems} />
             <main ref={scrollRef} className="scroll-container">
                 {mounted && (
                     <>
@@ -41,8 +50,8 @@ export default function HomeClient({
                         <PartnershipSection partnership={partnership} />
                         <OperationsSection certifications={certifications} />
                         <ServicesSection />
-                        <ExperienceSection />
-                        <InsightsSection />
+                        <ExperienceSection experiences={experiences} />
+                        <InsightsSection insights={insights} />
                         <LocationSection />
                         <ContactSection />
                     </>

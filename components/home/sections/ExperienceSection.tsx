@@ -4,19 +4,13 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import { experiences } from "@/lib/data";
-import { hasCaseStudy } from "@/lib/experiences";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import type { Experience } from "@/lib/experiences";
 
-
-type Experience = (typeof experiences)[number];
-
-
-
-const tintClasses: Record<string, string> = {
-    gold: "bg-gradient-to-t from-gold/85 via-gold/30 to-transparent mix-blend-color",
-    blue: "bg-gradient-to-t from-blue/90 via-blue/35 to-transparent mix-blend-color",
-};
+const tintClasses = [
+    "bg-gradient-to-t from-blue/90 via-blue/35 to-transparent mix-blend-color",
+    "bg-gradient-to-t from-gold/85 via-gold/30 to-transparent mix-blend-color",
+];
 
 function ExperienceCard({ exp, index }: { exp: Experience; index: number }) {
     return (
@@ -27,17 +21,14 @@ function ExperienceCard({ exp, index }: { exp: Experience; index: number }) {
             transition={{ duration: 0.5, delay: index * 0.06, ease: "easeOut" }}
             className="group relative overflow-hidden row-span-2"
         >
-            {hasCaseStudy(exp.key) && (
-                <Link
-                    href={`/experience/${exp.key}`}
-                    aria-label={`Read the ${exp.title} case study`}
-                    className="absolute inset-0 z-10"
-                />
-            )}
+            <Link
+                href={`/experience/${exp.key}`}
+                aria-label={`Read the ${exp.title} case study`}
+                className="absolute inset-0 z-10"
+            />
 
             <div
                 className="absolute inset-0"
-
                 style={{
                     maskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
                     WebkitMaskImage: "radial-gradient(ellipse at center, black 55%, transparent 100%)",
@@ -50,40 +41,39 @@ function ExperienceCard({ exp, index }: { exp: Experience; index: number }) {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
             </div>
-            <div className={`absolute inset-0 ${tintClasses[exp.tint]}`} />
+            <div className={`absolute inset-0 ${tintClasses[index % tintClasses.length]}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
 
             <div className="absolute inset-0 flex items-end p-4 md:p-5 transition-opacity duration-300 group-hover:opacity-0">
-                <h3 className="text-white font-semibold text-sm md:text-base leading-snug">
-                    {exp.title}
-                </h3>
+                <div>
+                    <span className="block text-[11px] uppercase tracking-wide text-white  mb-1">
+                        {exp.sector}
+                    </span>
+                </div>
             </div>
 
             <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-5 bg-ink/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="text-white font-semibold text-sm md:text-base leading-snug mb-2">
+                <span className="text-[11px] uppercase tracking-wide text-gold font-semibold mb-2">
+                    {exp.sector}
+                </span>
+                <h3 className="text-white text-sm md:text-base leading-snug mb-2">
                     {exp.title}
                 </h3>
-                <p className="text-mist text-xs md:text-sm leading-relaxed mb-3 line-clamp-5">
-                    {exp.description}
-                </p>
-                {hasCaseStudy(exp.key) && (
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-gold w-fit group-hover:gap-2 transition-all duration-300">
-                        Read more
-                        <ArrowUpRight size={16} />
-                    </span>
-                )}
-
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-gold w-fit group-hover:gap-2 transition-all duration-300">
+                    Read more
+                    <ArrowUpRight size={16} />
+                </span>
             </div>
         </motion.div>
     );
 }
 
-
-
-
-
-export default function ExperienceSection() {
+export default function ExperienceSection({ experiences }: { experiences: Experience[] }) {
     const sectionRef = useRef(null);
+
+    if (experiences.length === 0) {
+        return null;
+    }
 
     return (
         <section
@@ -106,8 +96,18 @@ export default function ExperienceSection() {
                     <div aria-hidden className="hidden lg:block lg:col-start-1 lg:row-start-1" />
                     <div aria-hidden className="hidden lg:block lg:col-start-3 lg:row-start-1" />
                     {experiences.map((exp, i) => (
-                        <ExperienceCard key={exp.title} exp={exp} index={i} />
+                        <ExperienceCard key={exp.key} exp={exp} index={i} />
                     ))}
+                </div>
+
+                <div className="mt-8 flex justify-end">
+                    <Link
+                        href="/experience"
+                        className="group inline-flex items-center gap-1 text-sm font-medium text-gold hover:gap-2 transition-all duration-300"
+                    >
+                        Discover more
+                        <ArrowRight size={16} />
+                    </Link>
                 </div>
             </div>
         </section>

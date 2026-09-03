@@ -5,15 +5,17 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "@/components/Logo";
 import NavDropdown from "@/components/layout/NavDropdown";
-import { navItems } from "@/lib/nav";
+import type { NavItem } from "@/lib/nav";
 import MobileNavAccordion from "@/components/layout/MobileNavAccordion";
 import NavMegaPanel from "@/components/layout/NavMegaPanel";
 import Link from "next/link";
 
 export default function Header({
     scrollRef,
+    navItems,
 }: {
     scrollRef?: React.RefObject<HTMLElement | null>;
+    navItems: NavItem[];
 }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);

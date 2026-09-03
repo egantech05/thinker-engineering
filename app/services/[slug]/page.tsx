@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ServiceClient from "@/components/services/ServiceClient";
 import { serviceDetails, getServiceDetail } from "@/lib/services";
+import { getNavItems } from "@/lib/nav";
 
 export function generateStaticParams() {
     return serviceDetails.map((service) => ({ slug: service.key }));
@@ -37,5 +38,7 @@ export default async function ServicePage({
         notFound();
     }
 
-    return <ServiceClient service={service} />;
+    const navItems = await getNavItems();
+
+    return <ServiceClient service={service} navItems={navItems} />;
 }

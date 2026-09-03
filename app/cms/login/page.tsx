@@ -13,7 +13,7 @@ export default async function LoginPage({
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black">
+        <div className="flex flex-1 items-center justify-center">
             <form action={login} className="w-full max-w-sm space-y-4 p-8">
                 <h1 className="text-xl font-medium text-white">CMS Login</h1>
                 {error && (

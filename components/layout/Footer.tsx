@@ -1,19 +1,42 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import Logo from "@/components/Logo";
 import { contact } from "@/lib/data";
+import { createClient } from "@/lib/supabase/client";
 
-const exploreLinks = [
-    { label: "Specialist", href: "#specialist" },
-    { label: "Services", href: "#services" },
-    { label: "Experience", href: "#experience" },
-    { label: "Insights", href: "/insights" },
-    { label: "Location", href: "#location" },
-];
+type FooterInsight = { slug: string; title: string };
+type FooterExperience = { key: string; title: string };
 
 export default function Footer() {
+    const [insights, setInsights] = useState<FooterInsight[]>([]);
+    const [experiences, setExperiences] = useState<FooterExperience[]>([]);
+
+    useEffect(() => {
+        const supabase = createClient();
+
+        supabase
+            .from("insights")
+            .select("slug, title")
+            .eq("status", "published")
+            .order("date", { ascending: false })
+            .limit(5)
+            .then(({ data }) => setInsights(data ?? []));
+
+        supabase
+            .from("experiences")
+            .select("key, title")
+            .eq("status", "published")
+            .order("date", { ascending: false })
+            .limit(5)
+            .then(({ data }) => setExperiences(data ?? []));
+    }, []);
+
     return (
         <footer className="bg-[#050913] text-white text-sm">
-            <div className="max-w-6xl mx-auto px-6 md:px-16 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-12 md:gap-20">
+            <div className="max-w-6xl xl:max-w-full mx-auto px-6 md:px-16 py-16">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_auto_auto] gap-12 md:gap-20">
                     <div>
                         <Logo className="h-16 w-auto mb-6" />
                         <div className="flex items-center gap-3">
@@ -60,28 +83,49 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    <div>
+                    <div className="max-w-[200px]">
                         <p className="text-xs font-semibold tracking-wider text-mist uppercase mb-4 pb-2 border-b border-white/10">
-                            Explore
+                            Topic
                         </p>
                         <ul className="space-y-3">
-                            {exploreLinks.map((link) => (
-                                <li key={link.href}>
-                                    <a href={link.href} className="text-mist hover:text-white transition-colors">
-                                        {link.label}
-                                    </a>
+                            {insights.map((item) => (
+                                <li key={item.slug}>
+                                    <Link
+                                        href={`/insights/${item.slug}`}
+                                        className="line-clamp-2 text-mist hover:text-white transition-colors"
+                                    >
+                                        {item.title}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </div>
-                </div>
-            </div>
+
+                    <div className="max-w-[200px]">
+                        <p className="text-xs font-semibold tracking-wider text-mist uppercase mb-4 pb-2 border-b border-white/10">
+                            Experience
+                        </p>
+                        <ul className="space-y-3">
+                            {experiences.map((item) => (
+                                <li key={item.key}>
+                                    <Link
+                                        href={`/experience/${item.key}`}
+                                        className="line-clamp-2 text-mist hover:text-white transition-colors"
+                                    >
+                                        {item.title}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div >
+            </div >
 
             <div>
-                <div className="max-w-6xl mx-auto px-6 md:px-16 py-6 text-xs text-mist">
+                <div className="max-w-6xl xl:max-w-full mx-auto px-6 md:px-16 py-6 text-xs text-mist">
                     © {new Date().getFullYear()} Thinker Engineering. All rights reserved.
                 </div>
             </div>
-        </footer>
+        </footer >
     );
 }

@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import type { NavItem } from "@/lib/nav";
 import {
-    relatedInsights,
     formatInsightDate,
     type Insight,
     type InsightBlock,
@@ -56,14 +56,38 @@ function Block({ block }: { block: InsightBlock }) {
                     )}
                 </blockquote>
             );
+        case "image":
+            return (
+                <figure className="my-10">
+                    <Image
+                        src={block.src}
+                        alt={block.alt ?? ""}
+                        width={1200}
+                        height={675}
+                        className="w-full rounded-lg object-cover"
+                    />
+                    {block.caption && (
+                        <figcaption className="text-sm text-mist mt-3">
+                            {block.caption}
+                        </figcaption>
+                    )}
+                </figure>
+            );
         default:
             return null;
     }
 }
 
-export default function InsightArticle({ item }: { item: Insight }) {
+export default function InsightArticle({
+    item,
+    related,
+    navItems,
+}: {
+    item: Insight;
+    related: Insight[];
+    navItems: NavItem[];
+}) {
     const router = useRouter();
-    const related = relatedInsights(item.slug, 3);
     const hasContent = Boolean(item.body && item.body.length > 0);
 
     const handleBack = () => {
@@ -77,7 +101,7 @@ export default function InsightArticle({ item }: { item: Insight }) {
 
     return (
         <>
-            <Header />
+            <Header navItems={navItems} />
             <main className="bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]">
                 <article>
                     {/* ---------------- Article head ---------------- */}

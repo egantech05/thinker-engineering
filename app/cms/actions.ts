@@ -8,3 +8,9 @@ export async function signOut() {
     await supabase.auth.signOut();
     redirect("/cms/login");
 }
+
+export async function signOutToWebsite() {
+    const supabase = await createClient();
+    await supabase.auth.signOut();
+    redirect("/");
+}

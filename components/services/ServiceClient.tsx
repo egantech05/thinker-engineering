@@ -8,13 +8,14 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { serviceDetails, type ServiceDetail } from "@/lib/services";
 import { contact } from "@/lib/data";
+import type { NavItem } from "@/lib/nav";
 
-export default function ServiceClient({ service }: { service: ServiceDetail }) {
+export default function ServiceClient({ service, navItems }: { service: ServiceDetail; navItems: NavItem[] }) {
     const otherServices = serviceDetails.filter((s) => s.key !== service.key);
 
     return (
         <>
-            <Header />
+            <Header navItems={navItems} />
             <main>
                 {/* ---------------- Hero ---------------- */}
                 <section className="relative min-h-[55vh] md:min-h-[65vh] flex items-end overflow-hidden bg-ink">
