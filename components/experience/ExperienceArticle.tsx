@@ -174,7 +174,7 @@ export default function ExperienceArticle({
                                 alt=""
                                 fill
                                 sizes="100vw"
-                                className="object-cover scale-[1.02]"
+                                className="object-cover"
                                 priority
                             />
                         </motion.div>

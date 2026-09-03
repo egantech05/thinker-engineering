@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import CmsNav from "@/components/cms/CmsNav";
+import { Pencil } from "lucide-react";
 
 export default async function CmsExperiencePage() {
     const supabase = await createClient();
@@ -60,9 +61,11 @@ export default async function CmsExperiencePage() {
                             <td className="py-3 pr-4">
                                 <Link
                                     href={`/cms/experience/${item.key}/edit`}
-                                    className="text-gold hover:underline"
+                                    aria-label="Edit"
+                                    title="Edit"
+                                    className="text-gold hover:text-gold/80"
                                 >
-                                    Edit
+                                    <Pencil className="h-4 w-4" />
                                 </Link>
                             </td>
                         </tr>
