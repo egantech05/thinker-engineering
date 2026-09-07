@@ -10,6 +10,7 @@ export default async function LoginPage({
     const errorMessages: Record<string, string> = {
         invalid_credentials: "Incorrect email or password.",
         too_many_attempts: "Too many attempts. Try again in a few minutes.",
+        invalid_or_expired_link: "That invite link is invalid or has expired. Generate a new one.",
     };
 
     return (
