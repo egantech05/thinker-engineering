@@ -46,7 +46,13 @@ function InsightCard({
                                 whileHover={{ scale: 1.12 }}
                                 transition={{ duration: 0.1, ease: "easeOut" }}
                             >
-                                <Image src={item.image} alt="" fill className="object-cover" />
+                                <Image
+                                    src={item.image}
+                                    alt=""
+                                    fill
+                                    sizes="(max-width: 768px) 256px, 320px"
+                                    className="object-cover"
+                                />
                             </motion.div>
                         )}
                         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />

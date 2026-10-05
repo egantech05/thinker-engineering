@@ -64,7 +64,7 @@ export default function HomeClient({
     return (
         <>
             <Header scrollRef={scrollRef} navItems={navItems} />
-            <main ref={scrollRef} className="scroll-container">
+            <main ref={scrollRef} className="scroll-container relative">
                 {mounted && (
                     <>
                         <HeroSection partners={partners} scrollRef={scrollRef} />

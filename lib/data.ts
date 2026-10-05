@@ -19,7 +19,7 @@ export const pillars = [
     {
         title: "Operational Excellence",
         body: "We instill our customers with confidence in maintaining critical business operations and navigating the ever-evolving technological landscape. We bring you a more sustainable data center solution.",
-        image: "/images/projects/project4.jpg",
+        image: "/images/datacenter-cabinet.jpg",
     },
 ];
 
