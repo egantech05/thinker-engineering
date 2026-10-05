@@ -1,3 +1,5 @@
+export type JobStatus = "draft" | "published";
+
 export type Job = {
     key: string;
     title: string;
@@ -7,9 +9,14 @@ export type Job = {
     summary: string;
     responsibilities: string[];
     requirements: string[];
+    status: JobStatus;
+    sort_order: number;
 };
 
-export const jobs: Job[] = [
+export const JOB_TYPES = ["Full-time", "Part-time", "Contract", "Internship"] as const;
+
+// TEMPORARY — removed in Step 6 once the Career page reads from Supabase
+export const jobs: Omit<Job, "status" | "sort_order">[] = [
     {
         key: "dc-design-engineer",
         title: "Data Center Design Engineer",

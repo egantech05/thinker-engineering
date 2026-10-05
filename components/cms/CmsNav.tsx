@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Settings } from "lucide-react";
 
-export default function CmsNav({ active }: { active: "insights" | "experience" | "logos" | "admins" }) {
+export default function CmsNav({ active }: { active: "insights" | "experience" | "jobs" | "logos" | "admins" }) {
     return (
         <nav className="mb-8 flex gap-4 text-sm">
             <Link
@@ -21,6 +21,12 @@ export default function CmsNav({ active }: { active: "insights" | "experience" |
                 className={active === "logos" ? "text-gold" : "text-white/60 hover:text-white"}
             >
                 Logos
+            </Link>
+            <Link
+                href="/cms/jobs"
+                className={active === "jobs" ? "text-gold" : "text-white/60 hover:text-white"}
+            >
+                Careers
             </Link>
             <Link
                 href="/cms/admins"

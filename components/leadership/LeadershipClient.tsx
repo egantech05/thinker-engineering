@@ -13,44 +13,64 @@ function LeaderDetailSection({ leader, zIndex }: { leader: Leader; zIndex: numbe
         <section
             id={`leader-${leader.key}`}
             style={{ zIndex }}
-            className="sticky top-0 h-screen flex items-center px-6 md:px-16 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]"
+            className="relative md:sticky md:top-0 min-h-screen md:h-screen flex items-center px-6 md:px-16 py-24 md:py-0 bg-gradient-to-b from-[#0f0f0f] via-[#1a1a1a] to-[#0f0f0f]"
         >
-            <div className="max-w-6xl mx-auto w-full relative">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="max-w-xs mb-10 md:mb-0 md:absolute md:top-0 md:right-0"
-                >
-                    <Quote size={28} className="rotate-180 text-gold mb-2" />
-                    <p className="text-lg leading-snug text-white/90">{leader.quote}</p>
-                    <Quote size={28} className="text-gold mt-2 ml-auto" />
-                </motion.div>
+            <div className="max-w-6xl mx-auto w-full flex flex-col gap-10 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-12">
+                {/* Left: quote (top) + name (bottom) */}
+                <div className="order-2 md:order-1 flex flex-col gap-8 md:self-stretch md:justify-between md:justify-self-start">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.4 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="order-2 md:order-1"
+                    >
+                        <Quote size={28} className="rotate-180 text-gold mb-2" />
+                        <p className="text-lg leading-snug text-white/90">{leader.quote}</p>
+                        <Quote size={28} className="text-gold mt-2 ml-auto" />
+                    </motion.div>
 
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.4 }}
+                        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                        className="order-1 md:order-2"
+                    >
+                        <p className="text-sm text-mist">{leader.title}</p>
+                        <p className="text-3xl md:text-4xl lg:text-5xl font-semibold uppercase leading-tight whitespace-nowrap">{leader.name}</p>
+                    </motion.div>
+                </div>
+                {/* Centre: image */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="relative h-[420px] md:h-[560px] w-full max-w-md mx-auto"
+                    className="order-1 md:order-2 relative h-[420px] md:h-[520px] w-[300px] lg:w-[380px] mx-auto"
                 >
                     <Image
                         src={leader.image}
                         alt={leader.name}
                         fill
-                        className="object-contain object-bottom"
+                        sizes="(min-width: 1024px) 380px, 300px"
+                        className="object-contain object-bottom [mask-image:linear-gradient(to_top,rgba(0,0,0,0.15)_5%,black_50%)]"
                     />
                 </motion.div>
+
+                {/* Right: bio */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-                    className="relative z-10 -mt-12 md:-mt-16"
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{ duration: 1, delay: 0.15, ease: "easeOut" }}
+                    className="order-3 max-w-sm md:justify-self-end space-y-4"
                 >
-                    <p className="text-sm text-mist">{leader.title}</p>
-                    <p className="text-3xl md:text-5xl font-semibold uppercase">{leader.name}</p>
+                    {leader.bio?.map((para, i) => (
+                        <p key={i} className="text-sm leading-relaxed text-white/70">
+                            {para}
+                        </p>
+                    ))}
                 </motion.div>
             </div>
         </section>
@@ -106,6 +126,8 @@ export default function LeadershipClient({ leaders, navItems }: { leaders: Leade
                                             src={leader.image}
                                             alt={leader.name}
                                             fill
+                                            sizes="(min-width: 768px) 340px, 240px"
+                                            loading="eager"
                                             className="object-contain object-bottom"
                                         />
                                     </button>
