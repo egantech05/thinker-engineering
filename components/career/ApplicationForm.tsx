@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import { CheckCircle2, FileText, Upload, X } from "lucide-react";
 import { jobs } from "@/lib/jobs";
 
-const MAX_FILE_BYTES = 5 * 1024 * 1024;
+const MAX_FILE_BYTES = 4 * 1024 * 1024;
 const ACCEPTED_EXTENSIONS = [".pdf", ".doc", ".docx"];
 
 const inputClass =
@@ -30,7 +30,9 @@ export default function ApplicationForm({
         phone: "",
         portfolio: "",
         note: "",
+        website: "",
     });
+    const [submitting, setSubmitting] = useState(false);
     const [file, setFile] = useState<File | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [submitted, setSubmitted] = useState(false);
@@ -58,7 +60,7 @@ export default function ApplicationForm({
             return;
         }
         if (selected.size > MAX_FILE_BYTES) {
-            setError("That file is too large. Maximum size is 5 MB.");
+            setError("That file is too large. Maximum size is 4 MB.");
             resetFileInput();
             return;
         }
@@ -72,7 +74,7 @@ export default function ApplicationForm({
         resetFileInput();
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!file) {
@@ -80,6 +82,7 @@ export default function ApplicationForm({
             return;
         }
         setError(null);
+        setSubmitting(true);
 
         const data = new FormData();
         data.append("name", form.name);
@@ -87,21 +90,29 @@ export default function ApplicationForm({
         data.append("phone", form.phone);
         data.append("portfolio", form.portfolio);
         data.append("note", form.note);
+        data.append("website", form.website);
         data.append("position", position || "General Application");
         data.append("cv", file);
 
-        // ---------------------------------------------------------------
-        // TODO: BACKEND NOT WIRED YET. Nothing leaves the browser.
-        // When Resend is ready, replace the two lines below with:
-        //   const res = await fetch("/api/career", { method: "POST", body: data });
-        // (and make handleSubmit async, plus add a "submitting" state).
-        // ---------------------------------------------------------------
-        console.log("Career application captured locally:", [...data.entries()]);
-        setSubmitted(true);
+        try {
+            const res = await fetch("/api/career", { method: "POST", body: data });
+            const result = await res.json().catch(() => ({}));
+
+            if (!res.ok) {
+                setError(result.error ?? "Something went wrong. Please try again.");
+                return;
+            }
+
+            setSubmitted(true);
+        } catch {
+            setError("Network error. Please check your connection and try again.");
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     const startOver = () => {
-        setForm({ name: "", email: "", phone: "", portfolio: "", note: "" });
+        setForm({ name: "", email: "", phone: "", portfolio: "", note: "", website: "" });
         onPositionChange("");
         clearFile();
         setSubmitted(false);
@@ -142,12 +153,6 @@ export default function ApplicationForm({
                             out if there is a fit.
                         </p>
 
-                        {/* DEV NOTICE — delete this block once /api/career is live */}
-                        <p className="mt-6 mx-auto max-w-md rounded-md border border-gold/30 bg-gold/10 px-4 py-3 text-xs text-gold-light">
-                            Demo only: no backend is connected yet, so nothing was actually sent.
-                            The payload was logged to the browser console.
-                        </p>
-
                         <button
                             type="button"
                             onClick={startOver}
@@ -167,6 +172,18 @@ export default function ApplicationForm({
                         onSubmit={handleSubmit}
                         className="rounded-3xl bg-white/10 md:bg-white/5 md:backdrop-blur-sm border border-white/10 p-8 md:p-10 space-y-5"
                     >
+                        {/* Honeypot — hidden from real users */}
+                        <input
+                            type="text"
+                            name="website"
+                            value={form.website}
+                            onChange={handleChange}
+                            tabIndex={-1}
+                            autoComplete="off"
+                            aria-hidden="true"
+                            className="hidden"
+                        />
+
                         <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-5">
                             <div>
                                 <label htmlFor="name" className={labelClass}>
@@ -308,7 +325,7 @@ export default function ApplicationForm({
                                 >
                                     <Upload size={20} className="text-mist" />
                                     <span className="text-sm">Click to upload your CV</span>
-                                    <span className="text-xs text-mist">PDF or Word, up to 5 MB</span>
+                                    <span className="text-xs text-mist">PDF up to 4 MB</span>
                                 </label>
                             )}
                         </motion.div>
@@ -318,15 +335,15 @@ export default function ApplicationForm({
                                 {error}
                             </p>
                         )}
-
                         <motion.button
                             variants={fadeUp}
                             whileHover={{ scale: 1.01 }}
                             whileTap={{ scale: 0.99 }}
                             type="submit"
-                            className="w-full rounded-full bg-gold hover:bg-gold-light text-ink py-3.5 font-semibold text-sm transition-colors cursor-pointer"
+                            disabled={submitting}
+                            className="w-full rounded-full bg-gold hover:bg-gold-light text-ink py-3.5 font-semibold text-sm transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Submit application
+                            {submitting ? "Submitting..." : "Submit application"}
                         </motion.button>
 
                         <p className="text-xs text-mist text-center">

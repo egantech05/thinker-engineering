@@ -60,9 +60,9 @@ export default function Footer() {
                         </p>
                         <ul className="space-y-3">
                             <li>
-                                <a href="#contact" className="font-semibold hover:text-gold transition-colors">
+                                <Link href="/#contact" className="font-semibold hover:text-gold transition-colors">
                                     Contact Us
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a

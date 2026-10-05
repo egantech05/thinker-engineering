@@ -39,6 +39,28 @@ export default function HomeClient({
         setMounted(true);
     }, []);
 
+    useEffect(() => {
+        if (!mounted) return;
+
+        const id = window.location.hash.slice(1);
+        if (!id) return;
+
+        const timer = setTimeout(() => {
+            const target = document.getElementById(id);
+            const container = scrollRef.current;
+            if (!target || !container) return;
+
+            const top =
+                target.getBoundingClientRect().top -
+                container.getBoundingClientRect().top +
+                container.scrollTop;
+
+            container.scrollTo({ top, behavior: "smooth" });
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [mounted]);
+
     return (
         <>
             <Header scrollRef={scrollRef} navItems={navItems} />

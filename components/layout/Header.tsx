@@ -62,6 +62,13 @@ export default function Header({
         }
     };
 
+    const goToContact = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        if (document.getElementById("contact")) {
+            e.preventDefault();
+            scrollToBuffer("contact");
+        }
+    };
+
     return (
         <>
             <header className="fixed top-0 left-0 right-0 z-50 flex justify-center">
@@ -139,17 +146,14 @@ ${scrolled
                                 <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z" />
                             </svg>
                         </a>
-                        <a
-                            href="#contact"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                scrollToBuffer("contact-buffer");
-                            }}
+                        <Link
+                            href="/#contact"
+                            onClick={goToContact}
                             className={`hidden sm:inline-block bg-gold hover:bg-gold-light text-ink font-semibold text-sm rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]
-                                ${scrolled ? "px-3.5 py-1.5" : "px-5 py-2"}`}
+                            ${scrolled ? "px-3.5 py-1.5" : "px-5 py-2"}`}
                         >
                             Contact Us
-                        </a>
+                        </Link>
                         <button
                             type="button"
                             onClick={() => setMobileOpen((prev) => !prev)}
@@ -171,17 +175,16 @@ ${scrolled
                     />
 
                     <div className="border-t border-white/10 pt-4 flex flex-col gap-4">
-                        <a
-                            href="#contact"
+                        <Link
+                            href="/#contact"
                             onClick={(e) => {
-                                e.preventDefault();
-                                scrollToBuffer("contact");
+                                goToContact(e);
                                 setMobileOpen(false);
                             }}
                             className="text-mist hover:text-white transition-colors"
                         >
                             Contact Us
-                        </a>
+                        </Link>
                         <a
 
                             href="https://www.linkedin.com/company/thinker-engineering"
