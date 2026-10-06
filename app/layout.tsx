@@ -3,9 +3,17 @@ import "./globals.css";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://thinker.digital"),
   title: "Thinker Engineering | Data Center Consultancy",
-  description:
-    "Powering The Future of Data Centers",
+  description: "Powering The Future of Data Centers",
+  openGraph: {
+    title: "Thinker Engineering | Data Center Consultancy",
+    description: "Powering The Future of Data Centers",
+    url: "https://thinker.digital",
+    siteName: "Thinker Engineering",
+    locale: "en_MY",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
