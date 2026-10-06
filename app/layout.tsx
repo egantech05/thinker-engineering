@@ -5,7 +5,7 @@ import LoadingScreen from "@/components/layout/LoadingScreen";
 export const metadata: Metadata = {
   title: "Thinker Engineering | Data Center Consultancy",
   description:
-    "Transforming digitalization into resilient infrastructure. Data center design, audit, execution and maintenance.",
+    "Powering The Future of Data Centers",
 };
 
 export default function RootLayout({
